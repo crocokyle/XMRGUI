@@ -7,7 +7,7 @@ If you have a GPU and already have either CUDA or OpenCL installed click no to b
 
 Feel free to leave any and all suggestions for new features as I will be maintaining this regularly. 
 
-Windows builds are in the Releases Folder. 
+Windows builds are in the Release Folder. 
 
 * Many of the features in the GUI do not function yet, please be patient and I will continue to update and add them.
 
