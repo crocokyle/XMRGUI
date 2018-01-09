@@ -13,6 +13,8 @@ Windows builds are in the Release Folder.
 
 * If you want to update your copy, delete the directory at appdata/XMRGUI and then download the program again.
 
-* There is currently an issue where the program errors out stating it is missing "libeay32.dll" and "ssleay32.dll"
-  These are libraries for OpenSSL. I have provided an affitional copy in the DLL folder until I can fix the issue. 
-  These need to be copied into your C:\Windows\System32 folder if you don't already have them.
+* OpenSSL Errors are fixed
+
+* Many exceptions have been fixed
+
+* Run on idle feature added. Has an issue updating the GUI on next run but scheduled task still exists and runs. 
