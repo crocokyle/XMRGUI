@@ -12,7 +12,7 @@ If you want to update your copy, delete the directory at AppData/Roaming/XMRGUIÂ
 
 Instructions:
 
-1. Run setup
+1. Run setup - In the release folder or at https://akhawaii.com/xmr-gui
 2. If you have Cuda or OpenCL installed, press "NO" to both prompts. XMRGUI will still use your GPU. It has issues detecting whether CUDA and OpenCL are installed and also downloads extremely slowly. I recommend manually grabbing these if you don't already have them.
 3. Enter your Pool URL, XMR Address, Port Number, and Pool Password.Â 
 4. Click "Mine!"
