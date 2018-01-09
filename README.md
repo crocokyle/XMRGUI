@@ -1,6 +1,6 @@
 # XMRGUI
 
-XMR GUI is in development and is in early alpha stages. Feel free to use the miner and submit any bugs below in the comments section. Currently, there are some issues with the initial GPU setup. 
+XMR GUI is in development and is in early alpha stages. This is a frontend wrapper for xmr-stak. Feel free to use the miner and submit any bugs below in the comments section. Currently, there are some issues with the initial GPU setup. 
 
 If you have a GPU and already have either CUDA or OpenCL installed click no to both prompts! 
 
@@ -9,6 +9,7 @@ Feel free to leave any and all suggestions for new features as I will be maintai
 Many of the features in the GUI do not function yet, please be patient and I will continue to update and add them.
 If you want to update your copy, delete the directory at AppData/Roaming/XMRGUI and then download the program again.
 
+* Currently, the dev donation is configurable through the GUI at a minimum of 1%
 
 Instructions:
 
