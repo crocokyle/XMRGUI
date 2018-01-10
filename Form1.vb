@@ -4,6 +4,8 @@ Imports System
 Imports System.IO
 Imports System.Text
 Imports System.IO.Compression
+Imports System.ComponentModel
+
 Public Class Form1
     Dim WithEvents WC As New WebClient
     Dim WithEvents xmrstak As New WebClient
@@ -27,7 +29,9 @@ Public Class Form1
             Button1.Visible = False
             Button2.Visible = False
             Label1.Text = "Downloading and installing XMRGUI"
+            AddHandler xmrstak.DownloadFileCompleted, AddressOf downloadcomplete
             xmrstak.DownloadFileAsync(New Uri("https://akhawaii.com/xmr.zip"), installxmr)
+            MsgBox("XMRGUI Setup is extracting some dependecies to /AppData/Roaming/XMRGUI and adding a shortcut to your Desktop." & vbCrLf & "If you have problems during use, try to delete this folder and run Setup again." & vbCrLf & "This is an early release. There will be bugs!" & vbCrLf & vbCrLf & "* Report bugs online an www.akhawaii.com/xmr-gui")
         End If
 
     End Sub
@@ -39,11 +43,22 @@ Public Class Form1
         Dim installexe = strAppData & "\XMRGUI\xmrgui.exe"
         Dim installxmr = strAppData & "\XMRGUI\xmr.zip"
         Dim installdir = strAppData & "\XMRGUI"
-        Using archive As ZipArchive = ZipFile.OpenRead(installxmr)
-            For Each entry As ZipArchiveEntry In archive.Entries
-                entry.ExtractToFile(Path.Combine(installdir, entry.FullName), True)
-            Next
-        End Using
+        Dim libeay32 = strAppData & "\XMRGUI\libeay32.dll"
+        Dim ssleay32 = strAppData & "\XMRGUI\ssleay32.dll"
+        Dim libeay32dest = "C:\Windows\system32\libeay32.dll"
+        Dim ssleay32dest = "C:\Windows\system32\ssleay32.dll"
+        My.Application.DoEvents()
+        Try
+            Using archive As ZipArchive = ZipFile.OpenRead(installxmr)
+                For Each entry As ZipArchiveEntry In archive.Entries
+                    entry.ExtractToFile(Path.Combine(installdir, entry.FullName), True)
+                Next
+            End Using
+
+
+        Catch ex As Exception
+
+        End Try
         ProgressBar1.Value = 0
         Label2.Text = 0
         Button1.Visible = True
@@ -59,11 +74,9 @@ Public Class Form1
         Label1.Text = "Downloading XMRGUI setup files..."
         Button1.Enabled = False
         Button2.Enabled = False
-        If ProgressBar1.Value = 100 Then
-            My.Application.DoEvents()
-            ProgressBar1.Value = 0
-            UnZip()
-        End If
+    End Sub
+    Private Sub downloadcomplete(sender As Object, e As AsyncCompletedEventArgs)
+        UnZip()
     End Sub
     Private Sub hidesetup()
         miner.Show()
@@ -129,5 +142,9 @@ Public Class Form1
         Me.Close()
         amdsetup.Close()
         miner.Close()
+    End Sub
+
+    Private Sub Label1_Click(sender As Object, e As EventArgs) Handles Label1.Click
+
     End Sub
 End Class

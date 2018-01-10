@@ -1,7 +1,18 @@
 ﻿Imports System.IO
 Imports System.Text
+Imports System.Net
+Imports Microsoft.Win32.TaskScheduler
+Imports System.Runtime.InteropServices
+Imports System.Windows.Forms
+Imports LiveCharts
+Imports LiveCharts.Wpf
+Imports LiveCharts.WinForms
+Imports System.Windows.Media
+Imports System.ComponentModel
 
 Public Class miner
+    Dim a, b As Integer
+    Dim newPoint As New System.Drawing.Point()
     Dim currentversion = "v1.0"
     Dim self = Application.ExecutablePath
     Dim objShell = CreateObject("WScript.Shell")
@@ -18,15 +29,39 @@ Public Class miner
     Dim pool = strAppData & "\XMRGUI\pool.dat"
     Dim portf = strAppData & "\XMRGUI\port.dat"
     Dim password = strAppData & "\XMRGUI\password.dat"
+    Dim idlebat = strAppData & "\XMRGUI\xmridle.bat"
+    Dim startupbat = strAppData & "\Microsoft\Windows\Start Menu\Programs\Startup\xmrgui.bat"
+    Dim serverversion = strAppData & "\XMRGUI\serverversion.txt"
+    Dim clientversion = strAppData & "\XMRGUI\version.txt"
+    Dim WithEvents versioncheck As New WebClient
     Dim refreshinteger As Int32
+    Dim refreshrate = 10000
     Dim lastlinetb = "test"
     Dim lastLine As String = Nothing ' same here
+    Private Sub ab_MouseDown(ByVal sender As System.Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles MyBase.MouseDown
+        a = MousePosition.X - Me.Location.X
+        b = MousePosition.Y - Me.Location.Y
+    End Sub
+
+
+
+    Private Sub ab_MouseMove(ByVal sender As System.Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles MyBase.MouseMove
+        If e.Button = MouseButtons.Left Then
+            newPoint = MousePosition
+            newPoint.X = newPoint.X - a
+            newPoint.Y = newPoint.Y - b
+            Me.Location = newPoint
+        End If
+    End Sub
+
 
     Private Sub TrayOnlyToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TrayOnlyToolStripMenuItem.Click
 
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles startbtn.Click
+        timerclearlog.Enabled = True
+        timerclearlog.Start()
         If Dir(xmroutput) <> "" Then
             Try
                 My.Computer.FileSystem.DeleteFile(xmroutput)
@@ -55,7 +90,12 @@ Public Class miner
         Dim poolpassword = poolpass.Text
         Dim poolport = port.Value
         If Dir(xmrconfig) <> "" Then
-            My.Computer.FileSystem.DeleteFile(xmrconfig)
+            Try
+                My.Computer.FileSystem.DeleteFile(xmrconfig)
+            Catch ex As Exception
+                MsgBox(ex)
+            End Try
+
         End If
         'write adress file for GUI
         If Dir(addr) <> "" Then
@@ -126,8 +166,9 @@ Public Class miner
             '.Arguments = "-c " & xmrconfig
         End With
         Dim proc = Process.Start(startInfo)
-        Timer1.Interval = refreshint.Value
+        Timer1.Interval = refreshrate
         Timer1.Enabled = True
+        Timer1.Start()
         Button1.Enabled = False
         userminingtimer.Enabled = True
         userminingtimer.Start()
@@ -188,11 +229,61 @@ Public Class miner
         MsgBox("Using automatic configuration scans the system and sets your GPU and CPU to use a recommended amount of threads. THIS WILL NOT GIVE YOU OPTIMAL PERFORMANCE! Edit your config file at: " & xmrconfig & " for an optimal hashrate.")
     End Sub
 
+
     Private Sub miner_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+        If Dir(idlebat) <> "" Then
+        Else
+            Dim file As System.IO.StreamWriter
+            file = My.Computer.FileSystem.OpenTextFileWriter(idlebat, True)
+            file.WriteLine("@echo off")
+            file.WriteLine("ECHO Idle detected...Starting XMRGUI")
+            file.WriteLine("""" & installexe & """" & " -idle")
+            file.WriteLine("exit")
+            file.Close()
+        End If
+        ' Check For Updates
+        ' Me.Enabled = False
+        Try
+            AddHandler versioncheck.DownloadFileCompleted, AddressOf downloadcomplete
+            versioncheck.DownloadFileAsync(New Uri("https://akhawaii.com/serverversion.txt"), serverversion)
+        Catch
+            updatefailed()
+        End Try
+
+    End Sub
+    Private Sub downloadcomplete(sender As Object, e As AsyncCompletedEventArgs)
+
+        ' read server version stored as SV
+        Dim server As New IO.FileStream(serverversion, FileMode.Open, FileAccess.Read, FileShare.ReadWrite)
+        Dim serverr As StreamReader = New StreamReader(server)
+        Dim sv As String = serverr.ReadLine
+        server.Close()
+        serverr.Close()
+        'read client version stored as CV
+        Dim client As New IO.FileStream(clientversion, FileMode.Open, FileAccess.Read, FileShare.ReadWrite)
+        Dim clientr As StreamReader = New StreamReader(client)
+        Dim cv As String = clientr.ReadLine
+        server.Close()
+        serverr.Close()
+        'compare versions
+        Dim svi = Convert.ToInt32(sv)
+        Dim cvi = Convert.ToInt32(cv)
+
+        If svi > cvi Then
+            'We need an update
+            updater.Show()
+            Me.Hide()
+        Else
+            Me.Enabled = True
+        End If
+        ' End of Update Checking
         ' Fill GUI with previous settings
         Dim donlev = devdonation.donatelevel
         devdonatetimer.Interval = donlev * 60000
+
         refreshinteger = refreshint.Value
+        Dim refreshrate = refreshinteger * 1000
         ' Pool Field
         Dim pr As New IO.FileStream(pool, FileMode.Open, FileAccess.Read, FileShare.ReadWrite)
         Dim prr As StreamReader = New StreamReader(pr)
@@ -224,14 +315,78 @@ Public Class miner
         passr.Close()
         passrr.Close()
         poolpass.Text = passread
-    End Sub
+        ' Handle arguments
+        Dim arguments = Environment.CommandLine
+        If arguments = """" & installexe & """" & "  -idle" Then
+            ' Start miner with all saved settings
+            startbtn.PerformClick()
+        Else
 
+        End If
+    End Sub
+    Private Sub updatefailed()
+        Me.Enabled = True
+        MsgBox("Update checking failed.")
+        ' End of Update Checking
+        ' Fill GUI with previous settings
+        Dim donlev = devdonation.donatelevel
+        devdonatetimer.Interval = donlev * 60000
+
+        refreshinteger = refreshint.Value
+        Dim refreshrate = refreshinteger * 1000
+        ' Pool Field
+        Dim pr As New IO.FileStream(pool, FileMode.Open, FileAccess.Read, FileShare.ReadWrite)
+        Dim prr As StreamReader = New StreamReader(pr)
+        Dim poolread As String = prr.ReadLine
+        pr.Close()
+        prr.Close()
+        poolurl.Text = poolread
+
+        ' Port Field
+        Dim portr As New IO.FileStream(portf, FileMode.Open, FileAccess.Read, FileShare.ReadWrite)
+        Dim portrr As StreamReader = New StreamReader(portr)
+        Dim portread As String = portrr.ReadLine
+        portr.Close()
+        portrr.Close()
+        port.Text = portread
+
+        ' Address field
+        Dim addrr As New IO.FileStream(addr, FileMode.Open, FileAccess.Read, FileShare.ReadWrite)
+        Dim addrrr As StreamReader = New StreamReader(addrr)
+        Dim addrread As String = addrrr.ReadLine
+        addrr.Close()
+        addrrr.Close()
+        xmraddr.Text = addrread
+
+        ' Password Field
+        Dim passr As New IO.FileStream(password, FileMode.Open, FileAccess.Read, FileShare.ReadWrite)
+        Dim passrr As StreamReader = New StreamReader(passr)
+        Dim passread As String = passrr.ReadLine
+        passr.Close()
+        passrr.Close()
+        poolpass.Text = passread
+        ' Handle arguments
+        Dim arguments = Environment.CommandLine
+        If arguments = """" & installexe & """" & "  -idle" Then
+            ' Start miner with all saved settings
+            startbtn.PerformClick()
+        Else
+
+        End If
+    End Sub
     Private Sub TabPage2_Click(sender As Object, e As EventArgs) Handles TabPage2.Click
 
     End Sub
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
         Try
+            'Dim lines = RichTextBox1.Lines.Count
+
+            ' If lines > 20 Then
+
+            'My.Computer.FileSystem.DeleteFile(xmroutput)
+
+            'End If
             Dim fs As New IO.FileStream(xmroutput, FileMode.Open, FileAccess.Read, FileShare.ReadWrite)
 
             Dim sr As StreamReader = New StreamReader(fs)
@@ -243,6 +398,7 @@ Public Class miner
             End If
             fs.Close()
             sr.Close()
+
         Catch ex As Exception
 
 
@@ -276,6 +432,9 @@ Public Class miner
         Dim poolport = port.Value
         If Dir(xmrconfig) <> "" Then
             My.Computer.FileSystem.DeleteFile(xmrconfig)
+        End If
+        If Dir(xmroutput) <> "" Then
+            My.Computer.FileSystem.DeleteFile(xmroutput)
         End If
         ' Fill GUI with previous settings
         refreshinteger = refreshint.Value
@@ -312,7 +471,7 @@ Public Class miner
         poolpass.Text = passread
         'write config for xmr-stak
         Try
-            Process.GetProcessesByName("xmr-stak")(0).Kill()
+            Process.GetProcessesByName(" Thenxmr-stak")(0).Kill()
             Timer1.Enabled = False
         Catch ex As Exception
 
@@ -369,6 +528,9 @@ Public Class miner
             If Dir(xmrconfig) <> "" Then
                 My.Computer.FileSystem.DeleteFile(xmrconfig)
             End If
+            If Dir(xmroutput) <> "" Then
+                My.Computer.FileSystem.DeleteFile(xmroutput)
+            End If
             Dim file As System.IO.StreamWriter
             file = My.Computer.FileSystem.OpenTextFileWriter(xmrconfig, True)
             file.WriteLine("""pool_list"" :")
@@ -422,5 +584,101 @@ Public Class miner
 
     Private Sub AboutToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AboutToolStripMenuItem.Click
         MsgBox("©2018 XMRGUI " & currentversion & vbCrLf & "www.akhawaii.com/xmr-gui")
+    End Sub
+
+    Private Sub EnableOnIdleToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EnableOnIdleToolStripMenuItem.Click
+        If EnableOnIdleToolStripMenuItem.Checked = True Then
+            MsgBox("* Enable on Idle is still buggy!" & vbCrLf & vbCrLf & "* UAC MUST BE DISABLED for XMRGUI to run on Idle." & vbCrLf & vbCrLf & "* No output will be displayed in the terminal while running as an idle task.")
+            Try
+                ' Define task
+                Dim ts As New TaskService
+                Dim newtask = ts.NewTask()
+                newtask.RegistrationInfo.Description = "Starts XMRGUI on idle"
+                newtask.Principal.LogonType = TaskLogonType.InteractiveToken
+
+
+                ' New trigger
+                Dim trigger = newtask.Triggers.Add(New IdleTrigger)
+                trigger.Enabled = True
+                newtask.Actions.Add(New ExecAction(idlebat))
+                ' Name and register
+                Dim taskname = "XMRGUI"
+                ts.RootFolder.RegisterTaskDefinition(taskname, newtask)
+            Catch ex As Exception
+
+            End Try
+
+        End If
+        If EnableOnIdleToolStripMenuItem.Checked = False Then
+            Try
+                ' Find task
+                Dim ts As New TaskService
+                Dim task = ts.GetTask("XMRGUI")
+                ' Delete
+                ts.RootFolder.DeleteTask("XMRGUI")
+
+            Catch ex As Exception
+                MsgBox(ex)
+            End Try
+        End If
+
+    End Sub
+
+    Private Sub EnableOnStartupToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EnableOnStartupToolStripMenuItem.Click
+        If EnableOnStartupToolStripMenuItem.Checked = True Then
+
+        End If
+    End Sub
+
+    Private Sub CartesianChart1_ChildChanged(sender As Object, e As Integration.ChildChangedEventArgs)
+
+    End Sub
+
+    Private Sub MenuStrip1_ItemClicked(sender As Object, e As ToolStripItemClickedEventArgs) Handles MenuStrip1.ItemClicked
+
+    End Sub
+
+    Private Sub TabPage1_Click(sender As Object, e As EventArgs) Handles TabPage1.Click
+
+    End Sub
+
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        Me.Close()
+    End Sub
+
+    Private Sub GreenToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles GreenToolStripMenuItem.Click
+        RichTextBox1.ForeColor = ColorTranslator.FromHtml("#29ed29")
+    End Sub
+
+    Private Sub BlueToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles BlueToolStripMenuItem.Click
+        RichTextBox1.ForeColor = ColorTranslator.FromHtml("#2a93ed")
+    End Sub
+
+    Private Sub OrangeToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles OrangeToolStripMenuItem.Click
+        RichTextBox1.ForeColor = ColorTranslator.FromHtml("#cb9b30")
+    End Sub
+
+    Private Sub refreshint_ValueChanged(sender As Object, e As EventArgs) Handles refreshint.ValueChanged
+        refreshinteger = refreshint.Value
+        refreshrate = refreshinteger * 1000
+    End Sub
+
+    Private Sub timerclearlog_Tick(sender As Object, e As EventArgs) Handles timerclearlog.Tick
+        stopbtn.PerformClick()
+
+        If Dir(xmroutput) <> "" Then
+            Try
+                My.Computer.FileSystem.DeleteFile(xmroutput)
+            Catch ex As Exception
+                'clearing during same session throws exception
+            End Try
+
+        End If
+
+        startbtn.PerformClick()
+    End Sub
+
+    Private Sub Chart1_Click(sender As Object, e As EventArgs)
+
     End Sub
 End Class

@@ -31,10 +31,12 @@ Partial Class miner
         Me.DonationLevelToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.RunGPUSetupToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.StartupBehaviourToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.EnableOnStartupToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.DisableOnStartupToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.EnableOnIdleToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.DisableOnIdleToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.EnableOnStartupToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.TerminalColorsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.BlueToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.GreenToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.OrangeToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.VisibilityToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TrayOnlyToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TrayOnlyToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
@@ -45,9 +47,11 @@ Partial Class miner
         Me.startbtn = New System.Windows.Forms.Button()
         Me.stopbtn = New System.Windows.Forms.Button()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
-        Me.TabPage1 = New System.Windows.Forms.TabPage()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
+        Me.RichTextBox1 = New System.Windows.Forms.RichTextBox()
+        Me.TabPage1 = New System.Windows.Forms.TabPage()
         Me.TabPage3 = New System.Windows.Forms.TabPage()
+        Me.Label9 = New System.Windows.Forms.Label()
         Me.xmraddr = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
@@ -64,16 +68,14 @@ Partial Class miner
         Me.NumericUpDown2 = New System.Windows.Forms.NumericUpDown()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.Label7 = New System.Windows.Forms.Label()
-        Me.RichTextBox1 = New System.Windows.Forms.RichTextBox()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
-        Me.Label8 = New System.Windows.Forms.Label()
-        Me.Label9 = New System.Windows.Forms.Label()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.devdonatetimer = New System.Windows.Forms.Timer(Me.components)
         Me.userminingtimer = New System.Windows.Forms.Timer(Me.components)
+        Me.Button2 = New System.Windows.Forms.Button()
+        Me.timerclearlog = New System.Windows.Forms.Timer(Me.components)
         Me.MenuStrip1.SuspendLayout()
         Me.TabControl1.SuspendLayout()
-        Me.TabPage1.SuspendLayout()
         Me.TabPage2.SuspendLayout()
         Me.TabPage3.SuspendLayout()
         CType(Me.port, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -84,6 +86,7 @@ Partial Class miner
         '
         'MenuStrip1
         '
+        Me.MenuStrip1.BackColor = System.Drawing.Color.FromArgb(CType(CType(34, Byte), Integer), CType(CType(34, Byte), Integer), CType(CType(34, Byte), Integer))
         Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem, Me.SettingsToolStripMenuItem, Me.HelpToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
@@ -93,76 +96,109 @@ Partial Class miner
         '
         'FileToolStripMenuItem
         '
+        Me.FileToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(CType(CType(34, Byte), Integer), CType(CType(34, Byte), Integer), CType(CType(34, Byte), Integer))
         Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ExitToolStripMenuItem})
+        Me.FileToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonHighlight
         Me.FileToolStripMenuItem.Name = "FileToolStripMenuItem"
         Me.FileToolStripMenuItem.Size = New System.Drawing.Size(37, 20)
         Me.FileToolStripMenuItem.Text = "File"
         '
         'ExitToolStripMenuItem
         '
+        Me.ExitToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(CType(CType(34, Byte), Integer), CType(CType(34, Byte), Integer), CType(CType(34, Byte), Integer))
+        Me.ExitToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonHighlight
         Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
         Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(92, 22)
         Me.ExitToolStripMenuItem.Text = "Exit"
         '
         'SettingsToolStripMenuItem
         '
-        Me.SettingsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DonationLevelToolStripMenuItem, Me.RunGPUSetupToolStripMenuItem, Me.StartupBehaviourToolStripMenuItem, Me.VisibilityToolStripMenuItem, Me.WebServerToolStripMenuItem})
+        Me.SettingsToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(CType(CType(34, Byte), Integer), CType(CType(34, Byte), Integer), CType(CType(34, Byte), Integer))
+        Me.SettingsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DonationLevelToolStripMenuItem, Me.RunGPUSetupToolStripMenuItem, Me.StartupBehaviourToolStripMenuItem, Me.TerminalColorsToolStripMenuItem, Me.VisibilityToolStripMenuItem, Me.WebServerToolStripMenuItem})
+        Me.SettingsToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonFace
         Me.SettingsToolStripMenuItem.Name = "SettingsToolStripMenuItem"
         Me.SettingsToolStripMenuItem.Size = New System.Drawing.Size(61, 20)
         Me.SettingsToolStripMenuItem.Text = "Settings"
         '
         'DonationLevelToolStripMenuItem
         '
+        Me.DonationLevelToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(CType(CType(34, Byte), Integer), CType(CType(34, Byte), Integer), CType(CType(34, Byte), Integer))
+        Me.DonationLevelToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonFace
         Me.DonationLevelToolStripMenuItem.Name = "DonationLevelToolStripMenuItem"
-        Me.DonationLevelToolStripMenuItem.Size = New System.Drawing.Size(154, 22)
+        Me.DonationLevelToolStripMenuItem.Size = New System.Drawing.Size(157, 22)
         Me.DonationLevelToolStripMenuItem.Text = "Donation Level"
         '
         'RunGPUSetupToolStripMenuItem
         '
+        Me.RunGPUSetupToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(CType(CType(34, Byte), Integer), CType(CType(34, Byte), Integer), CType(CType(34, Byte), Integer))
+        Me.RunGPUSetupToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonFace
         Me.RunGPUSetupToolStripMenuItem.Name = "RunGPUSetupToolStripMenuItem"
-        Me.RunGPUSetupToolStripMenuItem.Size = New System.Drawing.Size(154, 22)
+        Me.RunGPUSetupToolStripMenuItem.Size = New System.Drawing.Size(157, 22)
         Me.RunGPUSetupToolStripMenuItem.Text = "Run GPU Setup"
         '
         'StartupBehaviourToolStripMenuItem
         '
-        Me.StartupBehaviourToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.EnableOnStartupToolStripMenuItem, Me.DisableOnStartupToolStripMenuItem, Me.EnableOnIdleToolStripMenuItem, Me.DisableOnIdleToolStripMenuItem})
+        Me.StartupBehaviourToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(CType(CType(34, Byte), Integer), CType(CType(34, Byte), Integer), CType(CType(34, Byte), Integer))
+        Me.StartupBehaviourToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.EnableOnIdleToolStripMenuItem, Me.EnableOnStartupToolStripMenuItem})
+        Me.StartupBehaviourToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonFace
         Me.StartupBehaviourToolStripMenuItem.Name = "StartupBehaviourToolStripMenuItem"
-        Me.StartupBehaviourToolStripMenuItem.Size = New System.Drawing.Size(154, 22)
+        Me.StartupBehaviourToolStripMenuItem.Size = New System.Drawing.Size(157, 22)
         Me.StartupBehaviourToolStripMenuItem.Text = "Set and Forget"
-        '
-        'EnableOnStartupToolStripMenuItem
-        '
-        Me.EnableOnStartupToolStripMenuItem.CheckOnClick = True
-        Me.EnableOnStartupToolStripMenuItem.Name = "EnableOnStartupToolStripMenuItem"
-        Me.EnableOnStartupToolStripMenuItem.Size = New System.Drawing.Size(170, 22)
-        Me.EnableOnStartupToolStripMenuItem.Text = "Enable on Startup"
-        '
-        'DisableOnStartupToolStripMenuItem
-        '
-        Me.DisableOnStartupToolStripMenuItem.CheckOnClick = True
-        Me.DisableOnStartupToolStripMenuItem.Name = "DisableOnStartupToolStripMenuItem"
-        Me.DisableOnStartupToolStripMenuItem.Size = New System.Drawing.Size(170, 22)
-        Me.DisableOnStartupToolStripMenuItem.Text = "Disable on Startup"
         '
         'EnableOnIdleToolStripMenuItem
         '
         Me.EnableOnIdleToolStripMenuItem.CheckOnClick = True
         Me.EnableOnIdleToolStripMenuItem.Name = "EnableOnIdleToolStripMenuItem"
-        Me.EnableOnIdleToolStripMenuItem.Size = New System.Drawing.Size(170, 22)
+        Me.EnableOnIdleToolStripMenuItem.Size = New System.Drawing.Size(167, 22)
         Me.EnableOnIdleToolStripMenuItem.Text = "Enable on Idle"
         '
-        'DisableOnIdleToolStripMenuItem
+        'EnableOnStartupToolStripMenuItem
         '
-        Me.DisableOnIdleToolStripMenuItem.CheckOnClick = True
-        Me.DisableOnIdleToolStripMenuItem.Name = "DisableOnIdleToolStripMenuItem"
-        Me.DisableOnIdleToolStripMenuItem.Size = New System.Drawing.Size(170, 22)
-        Me.DisableOnIdleToolStripMenuItem.Text = "Disable on Idle"
+        Me.EnableOnStartupToolStripMenuItem.CheckOnClick = True
+        Me.EnableOnStartupToolStripMenuItem.Name = "EnableOnStartupToolStripMenuItem"
+        Me.EnableOnStartupToolStripMenuItem.Size = New System.Drawing.Size(167, 22)
+        Me.EnableOnStartupToolStripMenuItem.Text = "Enable on Startup"
+        '
+        'TerminalColorsToolStripMenuItem
+        '
+        Me.TerminalColorsToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(CType(CType(34, Byte), Integer), CType(CType(34, Byte), Integer), CType(CType(34, Byte), Integer))
+        Me.TerminalColorsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BlueToolStripMenuItem, Me.GreenToolStripMenuItem, Me.OrangeToolStripMenuItem})
+        Me.TerminalColorsToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control
+        Me.TerminalColorsToolStripMenuItem.Name = "TerminalColorsToolStripMenuItem"
+        Me.TerminalColorsToolStripMenuItem.Size = New System.Drawing.Size(157, 22)
+        Me.TerminalColorsToolStripMenuItem.Text = "Terminal Colors"
+        '
+        'BlueToolStripMenuItem
+        '
+        Me.BlueToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(CType(CType(34, Byte), Integer), CType(CType(34, Byte), Integer), CType(CType(34, Byte), Integer))
+        Me.BlueToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(CType(CType(42, Byte), Integer), CType(CType(147, Byte), Integer), CType(CType(237, Byte), Integer))
+        Me.BlueToolStripMenuItem.Name = "BlueToolStripMenuItem"
+        Me.BlueToolStripMenuItem.Size = New System.Drawing.Size(113, 22)
+        Me.BlueToolStripMenuItem.Text = "Blue"
+        '
+        'GreenToolStripMenuItem
+        '
+        Me.GreenToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(CType(CType(34, Byte), Integer), CType(CType(34, Byte), Integer), CType(CType(34, Byte), Integer))
+        Me.GreenToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(CType(CType(48, Byte), Integer), CType(CType(203, Byte), Integer), CType(CType(58, Byte), Integer))
+        Me.GreenToolStripMenuItem.Name = "GreenToolStripMenuItem"
+        Me.GreenToolStripMenuItem.Size = New System.Drawing.Size(113, 22)
+        Me.GreenToolStripMenuItem.Text = "Green"
+        '
+        'OrangeToolStripMenuItem
+        '
+        Me.OrangeToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(CType(CType(34, Byte), Integer), CType(CType(34, Byte), Integer), CType(CType(34, Byte), Integer))
+        Me.OrangeToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(CType(CType(203, Byte), Integer), CType(CType(155, Byte), Integer), CType(CType(48, Byte), Integer))
+        Me.OrangeToolStripMenuItem.Name = "OrangeToolStripMenuItem"
+        Me.OrangeToolStripMenuItem.Size = New System.Drawing.Size(113, 22)
+        Me.OrangeToolStripMenuItem.Text = "Orange"
         '
         'VisibilityToolStripMenuItem
         '
+        Me.VisibilityToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(CType(CType(34, Byte), Integer), CType(CType(34, Byte), Integer), CType(CType(34, Byte), Integer))
         Me.VisibilityToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.TrayOnlyToolStripMenuItem, Me.TrayOnlyToolStripMenuItem1, Me.InvisibleToolStripMenuItem})
+        Me.VisibilityToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonFace
         Me.VisibilityToolStripMenuItem.Name = "VisibilityToolStripMenuItem"
-        Me.VisibilityToolStripMenuItem.Size = New System.Drawing.Size(154, 22)
+        Me.VisibilityToolStripMenuItem.Size = New System.Drawing.Size(157, 22)
         Me.VisibilityToolStripMenuItem.Text = "Visibility"
         '
         'TrayOnlyToolStripMenuItem
@@ -188,65 +224,70 @@ Partial Class miner
         '
         'WebServerToolStripMenuItem
         '
+        Me.WebServerToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(CType(CType(34, Byte), Integer), CType(CType(34, Byte), Integer), CType(CType(34, Byte), Integer))
+        Me.WebServerToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonFace
         Me.WebServerToolStripMenuItem.Name = "WebServerToolStripMenuItem"
-        Me.WebServerToolStripMenuItem.Size = New System.Drawing.Size(154, 22)
+        Me.WebServerToolStripMenuItem.Size = New System.Drawing.Size(157, 22)
         Me.WebServerToolStripMenuItem.Text = "Web Server"
         '
         'HelpToolStripMenuItem
         '
+        Me.HelpToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(CType(CType(34, Byte), Integer), CType(CType(34, Byte), Integer), CType(CType(34, Byte), Integer))
         Me.HelpToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AboutToolStripMenuItem})
+        Me.HelpToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonFace
         Me.HelpToolStripMenuItem.Name = "HelpToolStripMenuItem"
         Me.HelpToolStripMenuItem.Size = New System.Drawing.Size(44, 20)
         Me.HelpToolStripMenuItem.Text = "Help"
         '
         'AboutToolStripMenuItem
         '
+        Me.AboutToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(CType(CType(34, Byte), Integer), CType(CType(34, Byte), Integer), CType(CType(34, Byte), Integer))
+        Me.AboutToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ButtonFace
         Me.AboutToolStripMenuItem.Name = "AboutToolStripMenuItem"
-        Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(107, 22)
         Me.AboutToolStripMenuItem.Text = "About"
         '
         'startbtn
         '
+        Me.startbtn.BackColor = System.Drawing.Color.FromArgb(CType(CType(34, Byte), Integer), CType(CType(34, Byte), Integer), CType(CType(34, Byte), Integer))
+        Me.startbtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(104, Byte), Integer), CType(CType(104, Byte), Integer), CType(CType(104, Byte), Integer))
+        Me.startbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.startbtn.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.startbtn.ForeColor = System.Drawing.SystemColors.ButtonShadow
         Me.startbtn.Location = New System.Drawing.Point(12, 439)
         Me.startbtn.Name = "startbtn"
         Me.startbtn.Size = New System.Drawing.Size(390, 58)
-        Me.startbtn.TabIndex = 3
+        Me.startbtn.TabIndex = 7
         Me.startbtn.Text = "Mine!"
-        Me.startbtn.UseVisualStyleBackColor = True
+        Me.startbtn.UseVisualStyleBackColor = False
         '
         'stopbtn
         '
+        Me.stopbtn.BackColor = System.Drawing.Color.FromArgb(CType(CType(34, Byte), Integer), CType(CType(34, Byte), Integer), CType(CType(34, Byte), Integer))
         Me.stopbtn.Enabled = False
+        Me.stopbtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(104, Byte), Integer), CType(CType(104, Byte), Integer), CType(CType(104, Byte), Integer))
+        Me.stopbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.stopbtn.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.stopbtn.ForeColor = System.Drawing.SystemColors.ButtonShadow
         Me.stopbtn.Location = New System.Drawing.Point(411, 439)
         Me.stopbtn.Name = "stopbtn"
         Me.stopbtn.Size = New System.Drawing.Size(390, 58)
-        Me.stopbtn.TabIndex = 4
+        Me.stopbtn.TabIndex = 8
         Me.stopbtn.Text = "Stop"
-        Me.stopbtn.UseVisualStyleBackColor = True
+        Me.stopbtn.UseVisualStyleBackColor = False
         '
         'TabControl1
         '
         Me.TabControl1.Controls.Add(Me.TabPage2)
         Me.TabControl1.Controls.Add(Me.TabPage1)
         Me.TabControl1.Controls.Add(Me.TabPage3)
-        Me.TabControl1.Location = New System.Drawing.Point(12, 28)
+        Me.TabControl1.Location = New System.Drawing.Point(11, 27)
+        Me.TabControl1.Margin = New System.Windows.Forms.Padding(0)
         Me.TabControl1.Name = "TabControl1"
+        Me.TabControl1.Padding = New System.Drawing.Point(0, 0)
         Me.TabControl1.SelectedIndex = 0
         Me.TabControl1.Size = New System.Drawing.Size(789, 323)
-        Me.TabControl1.TabIndex = 5
-        '
-        'TabPage1
-        '
-        Me.TabPage1.Controls.Add(Me.Label8)
-        Me.TabPage1.Location = New System.Drawing.Point(4, 22)
-        Me.TabPage1.Name = "TabPage1"
-        Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage1.Size = New System.Drawing.Size(781, 297)
-        Me.TabPage1.TabIndex = 0
-        Me.TabPage1.Text = "Graphical"
-        Me.TabPage1.UseVisualStyleBackColor = True
+        Me.TabControl1.TabIndex = 1
         '
         'TabPage2
         '
@@ -259,27 +300,69 @@ Partial Class miner
         Me.TabPage2.Text = "Text"
         Me.TabPage2.UseVisualStyleBackColor = True
         '
+        'RichTextBox1
+        '
+        Me.RichTextBox1.BackColor = System.Drawing.Color.FromArgb(CType(CType(34, Byte), Integer), CType(CType(34, Byte), Integer), CType(CType(34, Byte), Integer))
+        Me.RichTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.RichTextBox1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(42, Byte), Integer), CType(CType(147, Byte), Integer), CType(CType(237, Byte), Integer))
+        Me.RichTextBox1.HideSelection = False
+        Me.RichTextBox1.Location = New System.Drawing.Point(0, 0)
+        Me.RichTextBox1.Margin = New System.Windows.Forms.Padding(10)
+        Me.RichTextBox1.MaxLength = 50
+        Me.RichTextBox1.Name = "RichTextBox1"
+        Me.RichTextBox1.ReadOnly = True
+        Me.RichTextBox1.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None
+        Me.RichTextBox1.ShowSelectionMargin = True
+        Me.RichTextBox1.Size = New System.Drawing.Size(785, 297)
+        Me.RichTextBox1.TabIndex = 0
+        Me.RichTextBox1.Text = ""
+        '
+        'TabPage1
+        '
+        Me.TabPage1.BackColor = System.Drawing.Color.FromArgb(CType(CType(34, Byte), Integer), CType(CType(34, Byte), Integer), CType(CType(34, Byte), Integer))
+        Me.TabPage1.BackgroundImage = Global.XMRGUI.My.Resources.Resources.chart
+        Me.TabPage1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.TabPage1.Location = New System.Drawing.Point(4, 22)
+        Me.TabPage1.Name = "TabPage1"
+        Me.TabPage1.Size = New System.Drawing.Size(781, 297)
+        Me.TabPage1.TabIndex = 0
+        Me.TabPage1.Text = "Graphical"
+        '
         'TabPage3
         '
+        Me.TabPage3.BackColor = System.Drawing.Color.FromArgb(CType(CType(34, Byte), Integer), CType(CType(34, Byte), Integer), CType(CType(34, Byte), Integer))
         Me.TabPage3.Controls.Add(Me.Label9)
         Me.TabPage3.Location = New System.Drawing.Point(4, 22)
         Me.TabPage3.Name = "TabPage3"
         Me.TabPage3.Size = New System.Drawing.Size(781, 297)
         Me.TabPage3.TabIndex = 2
         Me.TabPage3.Text = "Approximate Earnings"
-        Me.TabPage3.UseVisualStyleBackColor = True
+        '
+        'Label9
+        '
+        Me.Label9.AutoSize = True
+        Me.Label9.Font = New System.Drawing.Font("Microsoft Sans Serif", 50.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label9.Location = New System.Drawing.Point(164, 108)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(455, 76)
+        Me.Label9.TabIndex = 1
+        Me.Label9.Text = "Coming Soon!"
         '
         'xmraddr
         '
-        Me.xmraddr.Location = New System.Drawing.Point(90, 383)
+        Me.xmraddr.BackColor = System.Drawing.Color.FromArgb(CType(CType(34, Byte), Integer), CType(CType(34, Byte), Integer), CType(CType(34, Byte), Integer))
+        Me.xmraddr.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.xmraddr.ForeColor = System.Drawing.SystemColors.Menu
+        Me.xmraddr.Location = New System.Drawing.Point(93, 383)
         Me.xmraddr.Name = "xmraddr"
         Me.xmraddr.Size = New System.Drawing.Size(458, 20)
-        Me.xmraddr.TabIndex = 0
+        Me.xmraddr.TabIndex = 5
         '
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(9, 386)
+        Me.Label1.ForeColor = System.Drawing.SystemColors.ButtonShadow
+        Me.Label1.Location = New System.Drawing.Point(13, 385)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(75, 13)
         Me.Label1.TabIndex = 1
@@ -288,7 +371,9 @@ Partial Class miner
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(28, 360)
+        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
+        Me.Label2.ForeColor = System.Drawing.SystemColors.ButtonShadow
+        Me.Label2.Location = New System.Drawing.Point(28, 362)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(56, 13)
         Me.Label2.TabIndex = 6
@@ -296,15 +381,19 @@ Partial Class miner
         '
         'poolurl
         '
-        Me.poolurl.Location = New System.Drawing.Point(90, 357)
+        Me.poolurl.BackColor = System.Drawing.Color.FromArgb(CType(CType(34, Byte), Integer), CType(CType(34, Byte), Integer), CType(CType(34, Byte), Integer))
+        Me.poolurl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.poolurl.ForeColor = System.Drawing.SystemColors.Info
+        Me.poolurl.Location = New System.Drawing.Point(93, 360)
         Me.poolurl.Name = "poolurl"
         Me.poolurl.Size = New System.Drawing.Size(312, 20)
-        Me.poolurl.TabIndex = 7
+        Me.poolurl.TabIndex = 2
         '
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(408, 360)
+        Me.Label3.ForeColor = System.Drawing.SystemColors.ButtonShadow
+        Me.Label3.Location = New System.Drawing.Point(408, 362)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(29, 13)
         Me.Label3.TabIndex = 8
@@ -312,18 +401,22 @@ Partial Class miner
         '
         'port
         '
-        Me.port.Location = New System.Drawing.Point(443, 357)
+        Me.port.BackColor = System.Drawing.Color.FromArgb(CType(CType(34, Byte), Integer), CType(CType(34, Byte), Integer), CType(CType(34, Byte), Integer))
+        Me.port.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.port.ForeColor = System.Drawing.SystemColors.ButtonShadow
+        Me.port.Location = New System.Drawing.Point(443, 361)
         Me.port.Maximum = New Decimal(New Integer() {65535, 0, 0, 0})
         Me.port.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
         Me.port.Name = "port"
-        Me.port.Size = New System.Drawing.Size(115, 20)
-        Me.port.TabIndex = 9
-        Me.port.Value = New Decimal(New Integer() {1, 0, 0, 0})
+        Me.port.Size = New System.Drawing.Size(108, 16)
+        Me.port.TabIndex = 3
+        Me.port.Value = New Decimal(New Integer() {3333, 0, 0, 0})
         '
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(564, 360)
+        Me.Label4.ForeColor = System.Drawing.SystemColors.ButtonShadow
+        Me.Label4.Location = New System.Drawing.Point(564, 362)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(137, 13)
         Me.Label4.TabIndex = 10
@@ -331,15 +424,20 @@ Partial Class miner
         '
         'refreshint
         '
-        Me.refreshint.Location = New System.Drawing.Point(707, 358)
+        Me.refreshint.BackColor = System.Drawing.Color.FromArgb(CType(CType(34, Byte), Integer), CType(CType(34, Byte), Integer), CType(CType(34, Byte), Integer))
+        Me.refreshint.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.refreshint.ForeColor = System.Drawing.SystemColors.ButtonShadow
+        Me.refreshint.Location = New System.Drawing.Point(707, 361)
+        Me.refreshint.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
         Me.refreshint.Name = "refreshint"
-        Me.refreshint.Size = New System.Drawing.Size(94, 20)
-        Me.refreshint.TabIndex = 11
-        Me.refreshint.Value = New Decimal(New Integer() {10, 0, 0, 0})
+        Me.refreshint.Size = New System.Drawing.Size(94, 16)
+        Me.refreshint.TabIndex = 4
+        Me.refreshint.Value = New Decimal(New Integer() {1, 0, 0, 0})
         '
         'Label5
         '
         Me.Label5.AutoSize = True
+        Me.Label5.ForeColor = System.Drawing.SystemColors.ButtonShadow
         Me.Label5.Location = New System.Drawing.Point(554, 386)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(80, 13)
@@ -348,26 +446,31 @@ Partial Class miner
         '
         'poolpass
         '
+        Me.poolpass.BackColor = System.Drawing.Color.FromArgb(CType(CType(34, Byte), Integer), CType(CType(34, Byte), Integer), CType(CType(34, Byte), Integer))
+        Me.poolpass.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.poolpass.ForeColor = System.Drawing.SystemColors.MenuBar
         Me.poolpass.Location = New System.Drawing.Point(640, 383)
         Me.poolpass.Name = "poolpass"
         Me.poolpass.Size = New System.Drawing.Size(161, 20)
-        Me.poolpass.TabIndex = 13
+        Me.poolpass.TabIndex = 6
         '
         'CheckBox1
         '
         Me.CheckBox1.AutoSize = True
         Me.CheckBox1.Checked = True
         Me.CheckBox1.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.CheckBox1.ForeColor = System.Drawing.SystemColors.ButtonShadow
         Me.CheckBox1.Location = New System.Drawing.Point(16, 416)
         Me.CheckBox1.Name = "CheckBox1"
         Me.CheckBox1.Size = New System.Drawing.Size(158, 17)
-        Me.CheckBox1.TabIndex = 14
+        Me.CheckBox1.TabIndex = 10
         Me.CheckBox1.Text = "Use automatic configuration"
         Me.CheckBox1.UseVisualStyleBackColor = True
         '
         'LinkLabel1
         '
         Me.LinkLabel1.AutoSize = True
+        Me.LinkLabel1.LinkColor = System.Drawing.Color.Silver
         Me.LinkLabel1.Location = New System.Drawing.Point(180, 417)
         Me.LinkLabel1.Name = "LinkLabel1"
         Me.LinkLabel1.Size = New System.Drawing.Size(35, 13)
@@ -377,23 +480,30 @@ Partial Class miner
         '
         'NumericUpDown1
         '
+        Me.NumericUpDown1.BackColor = System.Drawing.Color.FromArgb(CType(CType(34, Byte), Integer), CType(CType(34, Byte), Integer), CType(CType(34, Byte), Integer))
+        Me.NumericUpDown1.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.NumericUpDown1.Enabled = False
+        Me.NumericUpDown1.ForeColor = System.Drawing.SystemColors.ButtonShadow
         Me.NumericUpDown1.Location = New System.Drawing.Point(628, 413)
         Me.NumericUpDown1.Name = "NumericUpDown1"
-        Me.NumericUpDown1.Size = New System.Drawing.Size(43, 20)
+        Me.NumericUpDown1.Size = New System.Drawing.Size(43, 16)
         Me.NumericUpDown1.TabIndex = 16
         '
         'NumericUpDown2
         '
+        Me.NumericUpDown2.BackColor = System.Drawing.Color.FromArgb(CType(CType(34, Byte), Integer), CType(CType(34, Byte), Integer), CType(CType(34, Byte), Integer))
+        Me.NumericUpDown2.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.NumericUpDown2.Enabled = False
+        Me.NumericUpDown2.ForeColor = System.Drawing.SystemColors.ButtonShadow
         Me.NumericUpDown2.Location = New System.Drawing.Point(758, 413)
         Me.NumericUpDown2.Name = "NumericUpDown2"
-        Me.NumericUpDown2.Size = New System.Drawing.Size(43, 20)
+        Me.NumericUpDown2.Size = New System.Drawing.Size(43, 16)
         Me.NumericUpDown2.TabIndex = 17
         '
         'Label6
         '
         Me.Label6.AutoSize = True
+        Me.Label6.ForeColor = System.Drawing.SystemColors.ButtonShadow
         Me.Label6.Location = New System.Drawing.Point(548, 415)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(74, 13)
@@ -403,58 +513,30 @@ Partial Class miner
         'Label7
         '
         Me.Label7.AutoSize = True
+        Me.Label7.ForeColor = System.Drawing.SystemColors.ButtonShadow
         Me.Label7.Location = New System.Drawing.Point(677, 415)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(75, 13)
         Me.Label7.TabIndex = 19
         Me.Label7.Text = "GPU Threads:"
         '
-        'RichTextBox1
-        '
-        Me.RichTextBox1.BackColor = System.Drawing.Color.Black
-        Me.RichTextBox1.ForeColor = System.Drawing.Color.Lime
-        Me.RichTextBox1.HideSelection = False
-        Me.RichTextBox1.Location = New System.Drawing.Point(7, 4)
-        Me.RichTextBox1.MaxLength = 50
-        Me.RichTextBox1.Name = "RichTextBox1"
-        Me.RichTextBox1.ReadOnly = True
-        Me.RichTextBox1.Size = New System.Drawing.Size(768, 287)
-        Me.RichTextBox1.TabIndex = 0
-        Me.RichTextBox1.Text = ""
-        '
         'Timer1
         '
-        Me.Timer1.Interval = 1000
-        '
-        'Label8
-        '
-        Me.Label8.AutoSize = True
-        Me.Label8.Font = New System.Drawing.Font("Microsoft Sans Serif", 50.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label8.Location = New System.Drawing.Point(6, 3)
-        Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(455, 76)
-        Me.Label8.TabIndex = 0
-        Me.Label8.Text = "Coming Soon!"
-        '
-        'Label9
-        '
-        Me.Label9.AutoSize = True
-        Me.Label9.Font = New System.Drawing.Font("Microsoft Sans Serif", 50.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label9.Location = New System.Drawing.Point(3, 0)
-        Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(455, 76)
-        Me.Label9.TabIndex = 1
-        Me.Label9.Text = "Coming Soon!"
+        Me.Timer1.Interval = 10000
         '
         'Button1
         '
+        Me.Button1.BackColor = System.Drawing.Color.FromArgb(CType(CType(34, Byte), Integer), CType(CType(34, Byte), Integer), CType(CType(34, Byte), Integer))
         Me.Button1.Enabled = False
+        Me.Button1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(104, Byte), Integer), CType(CType(104, Byte), Integer), CType(CType(104, Byte), Integer))
+        Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button1.ForeColor = System.Drawing.SystemColors.ButtonShadow
         Me.Button1.Location = New System.Drawing.Point(327, 409)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(160, 23)
-        Me.Button1.TabIndex = 20
+        Me.Button1.TabIndex = 9
         Me.Button1.Text = "Clear Terminal"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.Button1.UseVisualStyleBackColor = False
         '
         'devdonatetimer
         '
@@ -464,11 +546,30 @@ Partial Class miner
         '
         Me.userminingtimer.Interval = 6000000
         '
+        'Button2
+        '
+        Me.Button2.BackColor = System.Drawing.Color.FromArgb(CType(CType(34, Byte), Integer), CType(CType(34, Byte), Integer), CType(CType(34, Byte), Integer))
+        Me.Button2.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(104, Byte), Integer), CType(CType(104, Byte), Integer), CType(CType(104, Byte), Integer))
+        Me.Button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button2.ForeColor = System.Drawing.SystemColors.ButtonShadow
+        Me.Button2.Location = New System.Drawing.Point(758, 0)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(55, 23)
+        Me.Button2.TabIndex = 21
+        Me.Button2.Text = "X"
+        Me.Button2.UseVisualStyleBackColor = False
+        '
+        'timerclearlog
+        '
+        Me.timerclearlog.Interval = 1200000
+        '
         'miner
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(49, Byte), Integer), CType(CType(49, Byte), Integer), CType(CType(51, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(813, 504)
+        Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.Label6)
@@ -490,6 +591,9 @@ Partial Class miner
         Me.Controls.Add(Me.stopbtn)
         Me.Controls.Add(Me.startbtn)
         Me.Controls.Add(Me.MenuStrip1)
+        Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
+        Me.ForeColor = System.Drawing.SystemColors.ButtonShadow
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MainMenuStrip = Me.MenuStrip1
         Me.Name = "miner"
@@ -498,8 +602,6 @@ Partial Class miner
         Me.MenuStrip1.ResumeLayout(False)
         Me.MenuStrip1.PerformLayout()
         Me.TabControl1.ResumeLayout(False)
-        Me.TabPage1.ResumeLayout(False)
-        Me.TabPage1.PerformLayout()
         Me.TabPage2.ResumeLayout(False)
         Me.TabPage3.ResumeLayout(False)
         Me.TabPage3.PerformLayout()
@@ -518,9 +620,7 @@ Partial Class miner
     Friend WithEvents RunGPUSetupToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents StartupBehaviourToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents EnableOnStartupToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents DisableOnStartupToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents EnableOnIdleToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents DisableOnIdleToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents VisibilityToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents TrayOnlyToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents HelpToolStripMenuItem As ToolStripMenuItem
@@ -553,9 +653,14 @@ Partial Class miner
     Friend WithEvents Label7 As Label
     Friend WithEvents RichTextBox1 As RichTextBox
     Friend WithEvents Timer1 As Timer
-    Friend WithEvents Label8 As Label
     Friend WithEvents Label9 As Label
     Friend WithEvents Button1 As Button
     Friend WithEvents devdonatetimer As Timer
     Friend WithEvents userminingtimer As Timer
+    Friend WithEvents Button2 As Button
+    Friend WithEvents TerminalColorsToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents GreenToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents BlueToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents OrangeToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents timerclearlog As Timer
 End Class

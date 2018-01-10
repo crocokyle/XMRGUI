@@ -24,6 +24,24 @@ Public Class amdsetup
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         If Dir("C:\AMD\AMD-14.41RC1-Win8.1-64Bit-OpenCL2-Sep19\Setup.exe") <> "" Then
             MsgBox("You have OpenCL installed! Good job miner.")
+            Dim self = Application.ExecutablePath
+            Dim objShell = CreateObject("WScript.Shell")
+            Dim oFSO = CreateObject("Scripting.FileSystemObject")
+            Dim strAppData = objShell.ExpandEnvironmentStrings("%APPDATA%")
+            Dim configfile = strAppData & "\XMRGUI\gpuconfig.dat"
+            Dim installexe = strAppData & "\XMRGUI\xmrgui.exe"
+            Dim fs As FileStream = IO.File.Create(configfile)
+            Dim info As Byte() = New UTF8Encoding(True).GetBytes("done")
+            fs.Write(info, 0, info.Length)
+            fs.Close()
+            Dim installxmr = strAppData & "\XMRGUI\xmr.zip"
+            Dim installdir = strAppData & "\XMRGUI"
+            If Dir(installxmr) <> "" Then
+                My.Computer.FileSystem.DeleteFile(installxmr)
+            End If
+
+            'create shortcut and start programdir version
+            CreateShortCut()
         Else
             WC.DownloadFileAsync(New Uri("https://www2.ati.com/drivers/amd-14.41rc1-win8.1-64bit-opencl2-sep19.exe"), "C:\temp\opencl.exe")
         End If
@@ -121,5 +139,9 @@ Public Class amdsetup
         Form1.Close()
         miner.Close()
         Me.Close()
+    End Sub
+
+    Private Sub Label1_Click(sender As Object, e As EventArgs) Handles Label1.Click
+
     End Sub
 End Class
