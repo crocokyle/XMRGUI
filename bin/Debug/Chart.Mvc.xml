@@ -1,0 +1,845 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Chart.Mvc</name>
+    </assembly>
+    <members>
+        <member name="T:Chart.Mvc.ComplexChart.BarChart">
+            <summary>
+            The bar chart.
+            </summary>
+        </member>
+        <member name="T:Chart.Mvc.ComplexChart.ComplexChartBase`1">
+            <summary>
+            The complex chart base.
+            </summary>
+        </member>
+        <member name="M:Chart.Mvc.ComplexChart.ComplexChartBase`1.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="!:ComplexChartBase"/> class.
+            </summary>
+        </member>
+        <member name="P:Chart.Mvc.ComplexChart.ComplexChartBase`1.ComplexData">
+            <summary>
+            Gets or sets the data.
+            </summary>
+        </member>
+        <member name="P:Chart.Mvc.ComplexChart.ComplexChartBase`1.ChartType">
+            <summary>
+            Gets the chart type.
+            </summary>
+        </member>
+        <member name="P:Chart.Mvc.ComplexChart.ComplexChartBase`1.ChartConfiguration">
+            <summary>
+            Gets the chart configuration.
+            </summary>
+        </member>
+        <member name="P:Chart.Mvc.ComplexChart.BarChart.ChartType">
+            <summary>
+            Gets the chart type.
+            </summary>
+        </member>
+        <member name="P:Chart.Mvc.ComplexChart.BarChart.ChartConfiguration">
+            <summary>
+            Gets the chart configuration.
+            </summary>
+        </member>
+        <member name="T:Chart.Mvc.ComplexChart.BarChartOptions">
+            <summary>
+            The bar chart options.
+            </summary>
+        </member>
+        <member name="T:Chart.Mvc.ComplexChart.ComplexChartOptions">
+            <summary>
+            The complex chart options.
+            </summary>
+        </member>
+        <member name="T:Chart.Mvc.GlobalChartOptions">
+            <summary>
+            The global chart options.
+            </summary>
+        </member>
+        <member name="P:Chart.Mvc.GlobalChartOptions.Animation">
+            <summary>
+            Gets or sets whether to animate the chart.
+            </summary>
+        </member>
+        <member name="P:Chart.Mvc.GlobalChartOptions.AnimationSteps">
+            <summary>
+            Gets or sets the number of animation steps.
+            </summary>
+        </member>
+        <member name="P:Chart.Mvc.GlobalChartOptions.AnimationEasing">
+            <summary>
+            Gets or sets the animation easing effect.
+            </summary>
+        </member>
+        <member name="P:Chart.Mvc.GlobalChartOptions.ShowScale">
+            <summary>
+            Gets or sets if we should show the scale at all.
+            </summary>
+        </member>
+        <member name="P:Chart.Mvc.GlobalChartOptions.ScaleOverride">
+            <summary>
+            Gets or sets if we want to override with a hard coded scale.
+            </summary>
+        </member>
+        <member name="P:Chart.Mvc.GlobalChartOptions.ScaleSteps">
+            <summary>
+            Gets or sets the number of steps in a hard coded scale.
+            </summary>
+        </member>
+        <member name="P:Chart.Mvc.GlobalChartOptions.ScaleStepWidth">
+            <summary>
+            Gets or sets the value jump in the hard coded scale.
+            </summary>
+        </member>
+        <member name="P:Chart.Mvc.GlobalChartOptions.ScaleStartValue">
+            <summary>
+            Gets or sets the scale starting value.
+            </summary>
+        </member>
+        <member name="P:Chart.Mvc.GlobalChartOptions.ScaleLineColor">
+            <summary>
+            Gets or sets the color of the scale line.
+            </summary>
+        </member>
+        <member name="P:Chart.Mvc.GlobalChartOptions.ScaleLineWidth">
+            <summary>
+            Gets or sets the pixel width of the scale line.
+            </summary>
+        </member>
+        <member name="P:Chart.Mvc.GlobalChartOptions.ScaleShowLabels">
+            <summary>
+            Gets or sets whether to show labels on the scale.
+            </summary>
+        </member>
+        <member name="P:Chart.Mvc.GlobalChartOptions.ScaleIntegersOnly">
+            <summary>
+            Gets or sets whether the scale should stick to integers, not floats even if drawing space is there.
+            </summary>
+        </member>
+        <member name="P:Chart.Mvc.GlobalChartOptions.ScaleBeginAtZero">
+            <summary>
+            Gets or sets whether the scale should start at zero, or an order of magnitude down from the lowest value.
+            </summary>
+        </member>
+        <member name="P:Chart.Mvc.GlobalChartOptions.ScaleFontFamily">
+            <summary>
+            Gets or sets the scale label font declaration for the scale label.
+            </summary>
+        </member>
+        <member name="P:Chart.Mvc.GlobalChartOptions.ScaleFontSize">
+            <summary>
+            Gets or sets the scale label font size in pixels.
+            </summary>
+        </member>
+        <member name="P:Chart.Mvc.GlobalChartOptions.ScaleFontStyle">
+            <summary>
+            Gets or sets the scale label font weight style.
+            </summary>
+        </member>
+        <member name="P:Chart.Mvc.GlobalChartOptions.ScaleFontColor">
+            <summary>
+            Gets or sets the scale label font color.
+            </summary>
+        </member>
+        <member name="P:Chart.Mvc.GlobalChartOptions.Responsive">
+            <summary>
+            Gets or sets whether or not the chart should be responsive and resize when the browser does.
+            </summary>
+        </member>
+        <member name="P:Chart.Mvc.GlobalChartOptions.MaintainAspectRatio">
+            <summary>
+            Gets or sets whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container.
+            </summary>
+        </member>
+        <member name="P:Chart.Mvc.GlobalChartOptions.ShowTooltips">
+            <summary>
+            Gets or sets whether to draw tooltips on the canvas or not.
+            </summary>
+        </member>
+        <member name="P:Chart.Mvc.GlobalChartOptions.CustomTooltips">
+            <summary>
+            Gets or sets whether to execute the customTooltips function instead of drawing the built in tooltips.
+            </summary>
+        </member>
+        <member name="P:Chart.Mvc.GlobalChartOptions.TooltipEvents">
+            <summary>
+            Gets or sets array of string names to attach tooltip events.
+            </summary>
+        </member>
+        <member name="P:Chart.Mvc.GlobalChartOptions.TooltipFillColor">
+            <summary>
+            Gets or sets the tooltip background color.
+            </summary>
+        </member>
+        <member name="P:Chart.Mvc.GlobalChartOptions.TooltipFontFamily">
+            <summary>
+            Gets or sets the tooltip label font declaration for the scale label.
+            </summary>
+        </member>
+        <member name="P:Chart.Mvc.GlobalChartOptions.TooltipFontSize">
+            <summary>
+            Gets or sets the tooltip label font size in pixels.
+            </summary>
+        </member>
+        <member name="P:Chart.Mvc.GlobalChartOptions.TooltipFontStyle">
+            <summary>
+            Gets or sets the tooltip font weight style.
+            </summary>
+        </member>
+        <member name="P:Chart.Mvc.GlobalChartOptions.TooltipFontColor">
+            <summary>
+            Gets or sets the tooltip label font colour.
+            </summary>
+        </member>
+        <member name="P:Chart.Mvc.GlobalChartOptions.TooltipTitleFontFamily">
+            <summary>
+            Gets or sets the tooltip title font declaration for the scale label.
+            </summary>
+        </member>
+        <member name="P:Chart.Mvc.GlobalChartOptions.TooltipTitleFontSize">
+            <summary>
+            Gets or sets the tooltip title font size in pixels.
+            </summary>
+        </member>
+        <member name="P:Chart.Mvc.GlobalChartOptions.TooltipTitleFontStyle">
+            <summary>
+            Gets or sets the tooltip title font weight style.
+            </summary>
+        </member>
+        <member name="P:Chart.Mvc.GlobalChartOptions.TooltipTitleFontColor">
+            <summary>
+            Gets or sets the tooltip title font colour.
+            </summary>
+        </member>
+        <member name="P:Chart.Mvc.GlobalChartOptions.TooltipYPadding">
+            <summary>
+            Gets or sets the pixel width of padding around tooltip text.
+            </summary>
+        </member>
+        <member name="P:Chart.Mvc.GlobalChartOptions.TooltipXPadding">
+            <summary>
+            Gets or sets the pixel width of padding around tooltip text.
+            </summary>
+        </member>
+        <member name="P:Chart.Mvc.GlobalChartOptions.TooltipCaretSize">
+            <summary>
+            Gets or sets the size of the caret on the tooltip.
+            </summary>
+        </member>
+        <member name="P:Chart.Mvc.GlobalChartOptions.TooltipCornerRadius">
+            <summary>
+            Gets or sets the pixel radius of the tooltip border.
+            </summary>
+        </member>
+        <member name="P:Chart.Mvc.GlobalChartOptions.TooltipXOffset">
+            <summary>
+            Gets or sets the tooltip x offset.
+            </summary>
+        </member>
+        <member name="P:Chart.Mvc.GlobalChartOptions.TooltipTemplate">
+            <summary>
+            Gets or sets the template string for single tooltips.
+            </summary>
+        </member>
+        <member name="P:Chart.Mvc.GlobalChartOptions.MultiTooltipTemplate">
+            <summary>
+            Gets or sets the multi tooltip template.
+            </summary>
+        </member>
+        <member name="P:Chart.Mvc.GlobalChartOptions.OnAnimationProgress">
+            <summary>
+            Gets or sets the function that will fire on animation progression..
+            </summary>
+        </member>
+        <member name="P:Chart.Mvc.GlobalChartOptions.OnAnimationComplete">
+            <summary>
+            Gets or sets the function that will fire on animation completion.
+            </summary>
+        </member>
+        <member name="P:Chart.Mvc.ComplexChart.ComplexChartOptions.LegendTemplate">
+            <summary>
+            Gets or sets the legend template.
+            </summary>
+        </member>
+        <member name="P:Chart.Mvc.ComplexChart.BarChartOptions.ScaleShowGridLines">
+            <summary>
+            Gets or sets the scale show grid lines.
+            </summary>
+        </member>
+        <member name="P:Chart.Mvc.ComplexChart.BarChartOptions.ScaleGridLineColor">
+            <summary>
+            Gets or sets the scale grid line color.
+            </summary>
+        </member>
+        <member name="P:Chart.Mvc.ComplexChart.BarChartOptions.ScaleGridLineWidth">
+            <summary>
+            Gets or sets the scale grid line width.
+            </summary>
+        </member>
+        <member name="P:Chart.Mvc.ComplexChart.BarChartOptions.ScaleShowHorizontalLines">
+            <summary>
+            Gets or sets the scale show horizontal lines.
+            </summary>
+        </member>
+        <member name="P:Chart.Mvc.ComplexChart.BarChartOptions.ScaleShowVerticalLines">
+            <summary>
+            Gets or sets the scale show vertical lines.
+            </summary>
+        </member>
+        <member name="P:Chart.Mvc.ComplexChart.BarChartOptions.BarShowStroke">
+            <summary>
+            Gets or sets the bar show stroke.
+            </summary>
+        </member>
+        <member name="P:Chart.Mvc.ComplexChart.BarChartOptions.BarStrokeWidth">
+            <summary>
+            Gets or sets the bar stroke width.
+            </summary>
+        </member>
+        <member name="P:Chart.Mvc.ComplexChart.BarChartOptions.BarValueSpacing">
+            <summary>
+            Gets or sets the bar value spacing.
+            </summary>
+        </member>
+        <member name="P:Chart.Mvc.ComplexChart.BarChartOptions.BarDatasetSpacing">
+            <summary>
+            Gets or sets the bar dataset spacing.
+            </summary>
+        </member>
+        <member name="T:Chart.Mvc.ComplexChart.ComplexChartType">
+            <summary>
+            The complex chart type.
+            </summary>
+        </member>
+        <member name="F:Chart.Mvc.ComplexChart.ComplexChartType.Line">
+            <summary>
+            The line.
+            </summary>
+        </member>
+        <member name="F:Chart.Mvc.ComplexChart.ComplexChartType.Bar">
+            <summary>
+            The bar.
+            </summary>
+        </member>
+        <member name="F:Chart.Mvc.ComplexChart.ComplexChartType.Radar">
+            <summary>
+            The radar.
+            </summary>
+        </member>
+        <member name="T:Chart.Mvc.ComplexChart.ComplexData">
+            <summary>
+            The complex data.
+            </summary>
+        </member>
+        <member name="M:Chart.Mvc.ComplexChart.ComplexData.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Chart.Mvc.ComplexChart.ComplexData"/> class.
+            </summary>
+        </member>
+        <member name="P:Chart.Mvc.ComplexChart.ComplexData.Labels">
+            <summary>
+            Gets or sets the labels.
+            </summary>
+        </member>
+        <member name="P:Chart.Mvc.ComplexChart.ComplexData.Datasets">
+            <summary>
+            Gets or sets the datasets.
+            </summary>
+        </member>
+        <member name="T:Chart.Mvc.ComplexChart.ComplexDataset">
+            <summary>
+            The complex dataset.
+            </summary>
+        </member>
+        <member name="M:Chart.Mvc.ComplexChart.ComplexDataset.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Chart.Mvc.ComplexChart.ComplexDataset"/> class.
+            </summary>
+        </member>
+        <member name="P:Chart.Mvc.ComplexChart.ComplexDataset.Label">
+            <summary>
+            Gets or sets the label.
+            </summary>
+        </member>
+        <member name="P:Chart.Mvc.ComplexChart.ComplexDataset.FillColor">
+            <summary>
+            Gets or sets the fill color.
+            </summary>
+        </member>
+        <member name="P:Chart.Mvc.ComplexChart.ComplexDataset.StrokeColor">
+            <summary>
+            Gets or sets the stroke color.
+            </summary>
+        </member>
+        <member name="P:Chart.Mvc.ComplexChart.ComplexDataset.PointColor">
+            <summary>
+            Gets or sets the point color.
+            </summary>
+        </member>
+        <member name="P:Chart.Mvc.ComplexChart.ComplexDataset.PointStrokeColor">
+            <summary>
+            Gets or sets the point stroke color.
+            </summary>
+        </member>
+        <member name="P:Chart.Mvc.ComplexChart.ComplexDataset.PointHighlightFill">
+            <summary>
+            Gets or sets the point highlight fill.
+            </summary>
+        </member>
+        <member name="P:Chart.Mvc.ComplexChart.ComplexDataset.PointHighlightStroke">
+            <summary>
+            Gets or sets the point highlight stroke.
+            </summary>
+        </member>
+        <member name="P:Chart.Mvc.ComplexChart.ComplexDataset.Data">
+            <summary>
+            Gets or sets the data.
+            </summary>
+        </member>
+        <member name="T:Chart.Mvc.ComplexChart.LineChart">
+            <summary>
+            The line chart.
+            </summary>
+        </member>
+        <member name="P:Chart.Mvc.ComplexChart.LineChart.ChartType">
+            <summary>
+            Gets the chart type.
+            </summary>
+        </member>
+        <member name="P:Chart.Mvc.ComplexChart.LineChart.ChartConfiguration">
+            <summary>
+            Gets the chart configuration.
+            </summary>
+        </member>
+        <member name="T:Chart.Mvc.ComplexChart.LineChartOptions">
+            <summary>
+            The line chart options.
+            </summary>
+        </member>
+        <member name="P:Chart.Mvc.ComplexChart.LineChartOptions.ScaleShowGridLines">
+            <summary>
+            Gets or sets the scale show grid lines.
+            </summary>
+        </member>
+        <member name="P:Chart.Mvc.ComplexChart.LineChartOptions.ScaleGridLineColor">
+            <summary>
+            Gets or sets the scale grid line color.
+            </summary>
+        </member>
+        <member name="P:Chart.Mvc.ComplexChart.LineChartOptions.ScaleGridLineWidth">
+            <summary>
+            Gets or sets the scale grid line width.
+            </summary>
+        </member>
+        <member name="P:Chart.Mvc.ComplexChart.LineChartOptions.ScaleShowHorizontalLines">
+            <summary>
+            Gets or sets the scale show horizontal lines.
+            </summary>
+        </member>
+        <member name="P:Chart.Mvc.ComplexChart.LineChartOptions.ScaleShowVerticalLines">
+            <summary>
+            Gets or sets the scale show vertical lines.
+            </summary>
+        </member>
+        <member name="P:Chart.Mvc.ComplexChart.LineChartOptions.BezierCurve">
+            <summary>
+            Gets or sets the bezier curve.
+            </summary>
+        </member>
+        <member name="P:Chart.Mvc.ComplexChart.LineChartOptions.BezierCurveTension">
+            <summary>
+            Gets or sets the bezier curve tension.
+            </summary>
+        </member>
+        <member name="P:Chart.Mvc.ComplexChart.LineChartOptions.PointDot">
+            <summary>
+            Gets or sets the point dot.
+            </summary>
+        </member>
+        <member name="P:Chart.Mvc.ComplexChart.LineChartOptions.PointDotRadius">
+            <summary>
+            Gets or sets the point dot radius.
+            </summary>
+        </member>
+        <member name="P:Chart.Mvc.ComplexChart.LineChartOptions.PointDotStrokeWidth">
+            <summary>
+            Gets or sets the point dot stroke width.
+            </summary>
+        </member>
+        <member name="P:Chart.Mvc.ComplexChart.LineChartOptions.PointHitDetectionRadius">
+            <summary>
+            Gets or sets the point hit detection radius.
+            </summary>
+        </member>
+        <member name="P:Chart.Mvc.ComplexChart.LineChartOptions.DatasetStroke">
+            <summary>
+            Gets or sets the dataset stroke.
+            </summary>
+        </member>
+        <member name="P:Chart.Mvc.ComplexChart.LineChartOptions.DatasetStrokeWidth">
+            <summary>
+            Gets or sets the dataset stroke width.
+            </summary>
+        </member>
+        <member name="P:Chart.Mvc.ComplexChart.LineChartOptions.DatasetFill">
+            <summary>
+            Gets or sets the dataset fill.
+            </summary>
+        </member>
+        <member name="T:Chart.Mvc.ComplexChart.RadarChart">
+            <summary>
+            The radar chart.
+            </summary>
+        </member>
+        <member name="P:Chart.Mvc.ComplexChart.RadarChart.ChartType">
+            <summary>
+            Gets the chart type.
+            </summary>
+        </member>
+        <member name="P:Chart.Mvc.ComplexChart.RadarChart.ChartConfiguration">
+            <summary>
+            Gets the chart configuration.
+            </summary>
+        </member>
+        <member name="T:Chart.Mvc.ComplexChart.RadarChartOptions">
+            <summary>
+            The radar chart options.
+            </summary>
+        </member>
+        <member name="P:Chart.Mvc.ComplexChart.RadarChartOptions.AngleLineColor">
+            <summary>
+            Gets or sets the angle line color.
+            </summary>
+        </member>
+        <member name="P:Chart.Mvc.ComplexChart.RadarChartOptions.AngleShowLineOut">
+            <summary>
+            Gets or sets the angle show line out.
+            </summary>
+        </member>
+        <member name="P:Chart.Mvc.ComplexChart.RadarChartOptions.ScaleShowLine">
+            <summary>
+            Gets or sets the scale show line.
+            </summary>
+        </member>
+        <member name="P:Chart.Mvc.ComplexChart.RadarChartOptions.AngleLineWidth">
+            <summary>
+            Gets or sets the angle line width.
+            </summary>
+        </member>
+        <member name="P:Chart.Mvc.ComplexChart.RadarChartOptions.PointLabelFontFamily">
+            <summary>
+            Gets or sets the point label font family.
+            </summary>
+        </member>
+        <member name="P:Chart.Mvc.ComplexChart.RadarChartOptions.PointLabelFontStyle">
+            <summary>
+            Gets or sets the point label font style.
+            </summary>
+        </member>
+        <member name="P:Chart.Mvc.ComplexChart.RadarChartOptions.PointLabelFontSize">
+            <summary>
+            Gets or sets the point label font size.
+            </summary>
+        </member>
+        <member name="P:Chart.Mvc.ComplexChart.RadarChartOptions.PointLabelFontColor">
+            <summary>
+            Gets or sets the point label font color.
+            </summary>
+        </member>
+        <member name="P:Chart.Mvc.ComplexChart.RadarChartOptions.PointDot">
+            <summary>
+            Gets or sets the point dot.
+            </summary>
+        </member>
+        <member name="P:Chart.Mvc.ComplexChart.RadarChartOptions.PointDotRadius">
+            <summary>
+            Gets or sets the point dot radius.
+            </summary>
+        </member>
+        <member name="P:Chart.Mvc.ComplexChart.RadarChartOptions.PointDotStrokeWidth">
+            <summary>
+            Gets or sets the point dot stroke width.
+            </summary>
+        </member>
+        <member name="P:Chart.Mvc.ComplexChart.RadarChartOptions.PointHitDetectionRadius">
+            <summary>
+            Gets or sets the point hit detection radius.
+            </summary>
+        </member>
+        <member name="P:Chart.Mvc.ComplexChart.RadarChartOptions.DatasetStroke">
+            <summary>
+            Gets or sets the dataset stroke.
+            </summary>
+        </member>
+        <member name="P:Chart.Mvc.ComplexChart.RadarChartOptions.DatasetStrokeWidth">
+            <summary>
+            Gets or sets the dataset stroke width.
+            </summary>
+        </member>
+        <member name="P:Chart.Mvc.ComplexChart.RadarChartOptions.DatasetFill">
+            <summary>
+            Gets or sets the dataset fill.
+            </summary>
+        </member>
+        <member name="F:Chart.Mvc.Extensions.ObjectExtensions.JsonSerializerSettings">
+            <summary>
+            The json serializer settings.
+            </summary>
+        </member>
+        <member name="M:Chart.Mvc.Extensions.ObjectExtensions.ToJson``1(``0)">
+            <summary>
+            The to json.
+            </summary>
+            <param name="obj">
+            The obj.
+            </param>
+            <typeparam name="T">
+            </typeparam>
+            <returns>
+            The <see cref="T:System.String"/>.
+            </returns>
+        </member>
+        <member name="T:Chart.Mvc.Extensions.HtmlExtensions">
+            <summary>
+            The html extensions.
+            </summary>
+        </member>
+        <member name="M:Chart.Mvc.Extensions.HtmlExtensions.CreateChart``1(System.Web.Mvc.HtmlHelper,System.String,Chart.Mvc.ComplexChart.ComplexChartBase{``0})">
+            <summary>
+            The create chart.
+            </summary>
+            <param name="htmlHelper">
+            The html helper.
+            </param>
+            <param name="canvasId">
+            The canvas id.
+            </param>
+            <param name="complexChart">
+            The complex chart.
+            </param>
+            <returns>
+            The <see cref="T:System.Web.Mvc.MvcHtmlString"/>.
+            </returns>
+        </member>
+        <member name="M:Chart.Mvc.Extensions.HtmlExtensions.CreateChart``1(System.Web.Mvc.HtmlHelper,System.String,Chart.Mvc.SimpleChart.SimpleChartBase{``0})">
+            <summary>
+            The create chart.
+            </summary>
+            <param name="htmlHelper">
+            The html helper.
+            </param>
+            <param name="canvasId">
+            The canvas id.
+            </param>
+            <param name="simpleChart">
+            The simple chart.
+            </param>
+            <returns>
+            The <see cref="T:System.Web.Mvc.MvcHtmlString"/>.
+            </returns>
+        </member>
+        <member name="T:Chart.Mvc.SimpleChart.DoughnutChart">
+            <summary>
+            The doughnut chart.
+            </summary>
+        </member>
+        <member name="T:Chart.Mvc.SimpleChart.SimpleChartBase`1">
+            <summary>
+            The simple chart base.
+            </summary>
+        </member>
+        <member name="M:Chart.Mvc.SimpleChart.SimpleChartBase`1.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="!:SimpleChartBase"/> class.
+            </summary>
+        </member>
+        <member name="P:Chart.Mvc.SimpleChart.SimpleChartBase`1.Data">
+            <summary>
+            Gets or sets the data.
+            </summary>
+        </member>
+        <member name="P:Chart.Mvc.SimpleChart.SimpleChartBase`1.ChartType">
+            <summary>
+            Gets the chart type.
+            </summary>
+        </member>
+        <member name="P:Chart.Mvc.SimpleChart.SimpleChartBase`1.ChartConfiguration">
+            <summary>
+            Gets the chart configuration.
+            </summary>
+        </member>
+        <member name="P:Chart.Mvc.SimpleChart.DoughnutChart.ChartType">
+            <summary>
+            Gets the chart type.
+            </summary>
+        </member>
+        <member name="P:Chart.Mvc.SimpleChart.DoughnutChart.ChartConfiguration">
+            <summary>
+            Gets the chart configuration.
+            </summary>
+        </member>
+        <member name="T:Chart.Mvc.SimpleChart.DoughnutChartOptions">
+            <summary>
+            The doughnut chart options.
+            </summary>
+        </member>
+        <member name="T:Chart.Mvc.SimpleChart.SimpleChartOptions">
+            <summary>
+            The simple chart options.
+            </summary>
+        </member>
+        <member name="P:Chart.Mvc.SimpleChart.SimpleChartOptions.SegmentShowStroke">
+            <summary>
+            Gets or sets the segment show stroke.
+            </summary>
+        </member>
+        <member name="P:Chart.Mvc.SimpleChart.SimpleChartOptions.SegmentStrokeWidth">
+            <summary>
+            Gets or sets the segment stroke width.
+            </summary>
+        </member>
+        <member name="P:Chart.Mvc.SimpleChart.SimpleChartOptions.AnimateRotate">
+            <summary>
+            Gets or sets the animate rotate.
+            </summary>
+        </member>
+        <member name="P:Chart.Mvc.SimpleChart.SimpleChartOptions.AnimateScale">
+            <summary>
+            Gets or sets the animate scale.
+            </summary>
+        </member>
+        <member name="P:Chart.Mvc.SimpleChart.SimpleChartOptions.LegendTemplate">
+            <summary>
+            Gets or sets the legend template.
+            </summary>
+        </member>
+        <member name="P:Chart.Mvc.SimpleChart.SimpleChartOptions.SegmentStrokeColor">
+            <summary>
+            Gets or sets the segment stroke color.
+            </summary>
+        </member>
+        <member name="P:Chart.Mvc.SimpleChart.DoughnutChartOptions.PercentageInnerCutout">
+            <summary>
+            Gets or sets the percentage inner cutout.
+            </summary>
+        </member>
+        <member name="T:Chart.Mvc.SimpleChart.PieChart">
+            <summary>
+            The pie chart.
+            </summary>
+        </member>
+        <member name="P:Chart.Mvc.SimpleChart.PieChart.ChartType">
+            <summary>
+            Gets the chart type.
+            </summary>
+        </member>
+        <member name="P:Chart.Mvc.SimpleChart.PieChart.ChartConfiguration">
+            <summary>
+            Gets the chart configuration.
+            </summary>
+        </member>
+        <member name="T:Chart.Mvc.SimpleChart.PieChartOptions">
+            <summary>
+            The pie chart options.
+            </summary>
+        </member>
+        <member name="P:Chart.Mvc.SimpleChart.PieChartOptions.PercentageInnerCutout">
+            <summary>
+            Gets or sets the percentage inner cutout.
+            </summary>
+        </member>
+        <member name="T:Chart.Mvc.SimpleChart.PolarAreaChart">
+            <summary>
+            The polar area chart.
+            </summary>
+        </member>
+        <member name="P:Chart.Mvc.SimpleChart.PolarAreaChart.ChartType">
+            <summary>
+            Gets the chart type.
+            </summary>
+        </member>
+        <member name="P:Chart.Mvc.SimpleChart.PolarAreaChart.ChartConfiguration">
+            <summary>
+            Gets the chart configuration.
+            </summary>
+        </member>
+        <member name="T:Chart.Mvc.SimpleChart.PolarAreaOptions">
+            <summary>
+            The polar area options.
+            </summary>
+        </member>
+        <member name="P:Chart.Mvc.SimpleChart.PolarAreaOptions.ScaleShowLabelBackdrop">
+            <summary>
+            Gets or sets the scale show label backdrop.
+            </summary>
+        </member>
+        <member name="P:Chart.Mvc.SimpleChart.PolarAreaOptions.ScaleBackdropColor">
+            <summary>
+            Gets or sets the scale backdrop color.
+            </summary>
+        </member>
+        <member name="P:Chart.Mvc.SimpleChart.PolarAreaOptions.ScaleBackdropPaddingY">
+            <summary>
+            Gets or sets the scale backdrop padding y.
+            </summary>
+        </member>
+        <member name="P:Chart.Mvc.SimpleChart.PolarAreaOptions.ScaleBackdropPaddingX">
+            <summary>
+            Gets or sets the scale backdrop padding x.
+            </summary>
+        </member>
+        <member name="P:Chart.Mvc.SimpleChart.PolarAreaOptions.ScaleShowLine">
+            <summary>
+            Gets or sets the scale show line.
+            </summary>
+        </member>
+        <member name="T:Chart.Mvc.SimpleChart.SimpleChartType">
+            <summary>
+            The simple chart type.
+            </summary>
+        </member>
+        <member name="F:Chart.Mvc.SimpleChart.SimpleChartType.PolarArea">
+            <summary>
+            The polar area.
+            </summary>
+        </member>
+        <member name="F:Chart.Mvc.SimpleChart.SimpleChartType.Pie">
+            <summary>
+            The pie.
+            </summary>
+        </member>
+        <member name="F:Chart.Mvc.SimpleChart.SimpleChartType.Doughnut">
+            <summary>
+            The doughnut.
+            </summary>
+        </member>
+        <member name="T:Chart.Mvc.SimpleChart.SimpleData">
+            <summary>
+            The simple data.
+            </summary>
+        </member>
+        <member name="P:Chart.Mvc.SimpleChart.SimpleData.Value">
+            <summary>
+            Gets or sets the value.
+            </summary>
+        </member>
+        <member name="P:Chart.Mvc.SimpleChart.SimpleData.Color">
+            <summary>
+            Gets or sets the color.
+            </summary>
+        </member>
+        <member name="P:Chart.Mvc.SimpleChart.SimpleData.Highlight">
+            <summary>
+            Gets or sets the highlight.
+            </summary>
+        </member>
+        <member name="P:Chart.Mvc.SimpleChart.SimpleData.Label">
+            <summary>
+            Gets or sets the label.
+            </summary>
+        </member>
+    </members>
+</doc>
