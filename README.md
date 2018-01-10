@@ -29,7 +29,7 @@ Antivirus currently detects xmr-stak.exe as a potentially dangerous file. Until
 
 Changelog:
 
-01/09/2018 - Updated UI Color Scheme
+01/09/2018 - Updated UI Color Scheme, possible long run time memory overflow fix, added terminal color settings, fixed refresh interval.
 
 01/08/2018 - Added "Run on Idle" and "Run on Startup" Feature, Several Bugs Fixed. 
 
