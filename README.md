@@ -2,9 +2,11 @@
 
 XMR GUI is in development and is in early alpha stages. This is a frontend wrapper for xmr-stak. Feel free to use the miner and submit any bugs below in the comments section. Currently, there are some issues with the initial GPU setup. 
 
+![alt text](https://akhawaii.com/wp-content/uploads/2018/01/screen.gif)
+
 ![alt text](https://akhawaii.com/wp-content/uploads/2018/01/screen1.png)
 
-![alt text](https://akhawaii.com/wp-content/uploads/2018/01/screenshot2.png)
+
 
 If you have a GPU and already have either CUDA or OpenCL installed click no to both prompts! 
 
