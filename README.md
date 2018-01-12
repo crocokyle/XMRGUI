@@ -1,14 +1,12 @@
 # XMRGUI
 
-XMR GUI is in development and is in early alpha stages. This is a frontend wrapper for xmr-stak. Feel free to use the miner and submit any bugs below in the comments section. Currently, there are some issues with the initial GPU setup. 
+XMR GUI is in development and is in early alpha stages. This is a frontend wrapper for xmr-stak. Feel free to use the miner and submit any bugs below in the comments section.
 
 ![alt text](https://akhawaii.com/wp-content/uploads/2018/01/screen.gif)
 
 ![alt text](https://akhawaii.com/wp-content/uploads/2018/01/screen1.png)
 
 
-
-If you have a GPU and already have either CUDA or OpenCL installed click no to both prompts! 
 
 Feel free to leave any and all suggestions for new features as I will be maintaining this regularly. 
 
@@ -19,9 +17,8 @@ Many of the features in the GUI do not function yet, please be patient and I wil
 Instructions:
 
 1. Run setup - In the release folder or at https://akhawaii.com/xmr-gui
-2. If you have Cuda or OpenCL installed, press "NO" to both prompts. XMRGUI will still use your GPU. It has issues detecting whether CUDA and OpenCL are installed and also downloads extremely slowly. I recommend manually grabbing these if you don't already have them.
-3. Enter your Pool URL, XMR Address, Port Number, and Pool Password. 
-4. Click "Mine!"
+2. Enter your Pool URL, XMR Address, Port Number, and Pool Password. 
+3. Click "Mine!"
 
 
 Special Notes:
