@@ -34,6 +34,10 @@ Antivirus currently detects xmr-stak.exe as a potentially dangerous file. Until
 
 Changelog:
 
+01/12/2018 - Fixed GPU detection and setup. Added an instructional for beginners.
+
+01/11/2018 - Fixed a major memory leak. Added first hashrate graph. Several Bug Fixes.
+
 01/10/2018 - Added an update utility. Users will be prompted to update if one is found. Installation takes less than 1 minute and is automatic.
 
 01/09/2018 - Updated UI Color Scheme, possible long run time memory overflow fix, added terminal color settings, fixed refresh interval.
