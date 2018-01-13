@@ -24,7 +24,9 @@ Instructions:
 Special Notes:
 
 If you have issues with the program make sure to delete the folder at /AppData/Roaming/XMRGUI and reinstall.
-Choosing the "Run on Idle" option has some minor issues. Please report them below. Currently, the GUI will remember your pool information, however, it won't remember the option for "Run on Idle" even though it still functions
+Choosing the "Run on Idle" option has some minor issues. Please report them below. Currently, the GUI will remember your pool information, however, it won't remember the option for "Run on Idle" even though it still functions.
+
+
 If you click "Mine!" and don't get any text displayed in the terminal area, please double check your pool information for incorrect symbols.
 Antivirus currently detects xmr-stak.exe as a potentially dangerous file. Untill I can request that xmr-stak be whitelisted, you may need to allow it to run manually. This happens with almost all compiled versions of xmr-stak.
 
