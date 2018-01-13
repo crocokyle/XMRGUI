@@ -130,6 +130,7 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.IO.Compression" />
     <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.Management" />
     <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
       <Private>True</Private>
@@ -220,6 +221,12 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="noob.Designer.vb">
+      <DependentUpon>noob.vb</DependentUpon>
+    </Compile>
+    <Compile Include="noob.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="ObservableValue.vb" />
     <Compile Include="updater.Designer.vb">
       <DependentUpon>updater.vb</DependentUpon>
@@ -227,6 +234,7 @@
     <Compile Include="updater.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="WMI.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="amdsetup.resx">
@@ -246,6 +254,9 @@
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="noob.resx">
+      <DependentUpon>noob.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="updater.resx">
       <DependentUpon>updater.vb</DependentUpon>
@@ -276,6 +287,15 @@
     <Content Include="logolarge_AR6_icon.ico" />
     <Content Include="logolarge_Yt6_icon.ico" />
     <None Include="Resources\chart.png" />
+    <None Include="Resources\logolarge.png" />
+    <None Include="Resources\screen.gif" />
+    <None Include="Resources\test.gif" />
+    <None Include="Resources\baby.png" />
+    <None Include="Resources\middle.png" />
+    <None Include="Resources\old.gif" />
+    <None Include="Resources\step1.png" />
+    <None Include="Resources\step2.png" />
+    <None Include="Resources\step3.png" />
     <Content Include="Scripts\Chart.js" />
   </ItemGroup>
   <ItemGroup>

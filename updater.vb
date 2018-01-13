@@ -4,9 +4,6 @@ Imports System.Net
 Imports Microsoft.Win32.TaskScheduler
 Imports System.Runtime.InteropServices
 Imports System.Windows.Forms
-Imports LiveCharts
-Imports LiveCharts.Wpf
-Imports LiveCharts.WinForms
 Imports System.Windows.Media
 Imports System.ComponentModel
 
@@ -65,4 +62,11 @@ Public Class updater
         Application.Exit()
     End Sub
 
+    Private Sub Label6_Click(sender As Object, e As EventArgs) Handles Label6.Click
+
+    End Sub
+
+    Private Sub updater_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+    End Sub
 End Class

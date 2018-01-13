@@ -16,104 +16,6 @@ Public Class amdsetup
     Private Sub amdsetup_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
     End Sub
-
-    Private Sub RichTextBox1_TextChanged(sender As Object, e As EventArgs)
-
-    End Sub
-
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        If Dir("C:\AMD\AMD-14.41RC1-Win8.1-64Bit-OpenCL2-Sep19\Setup.exe") <> "" Then
-            MsgBox("You have OpenCL installed! Good job miner.")
-            Dim self = Application.ExecutablePath
-            Dim objShell = CreateObject("WScript.Shell")
-            Dim oFSO = CreateObject("Scripting.FileSystemObject")
-            Dim strAppData = objShell.ExpandEnvironmentStrings("%APPDATA%")
-            Dim configfile = strAppData & "\XMRGUI\gpuconfig.dat"
-            Dim installexe = strAppData & "\XMRGUI\xmrgui.exe"
-            Dim fs As FileStream = IO.File.Create(configfile)
-            Dim info As Byte() = New UTF8Encoding(True).GetBytes("done")
-            fs.Write(info, 0, info.Length)
-            fs.Close()
-            Dim installxmr = strAppData & "\XMRGUI\xmr.zip"
-            Dim installdir = strAppData & "\XMRGUI"
-            If Dir(installxmr) <> "" Then
-                My.Computer.FileSystem.DeleteFile(installxmr)
-            End If
-
-            'create shortcut and start programdir version
-            CreateShortCut()
-        Else
-            WC.DownloadFileAsync(New Uri("https://www2.ati.com/drivers/amd-14.41rc1-win8.1-64bit-opencl2-sep19.exe"), "C:\temp\opencl.exe")
-        End If
-    End Sub
-    Private Sub WC_DownloadProgressChanged(ByVal sender As Object, ByVal e As DownloadProgressChangedEventArgs) Handles WC.DownloadProgressChanged
-        ProgressBar1.Value = e.ProgressPercentage
-        Label2.Text = e.ProgressPercentage
-        Label1.Text = "Downloading OpenCL. Go smoke a bowl..."
-        Button1.Enabled = False
-        Button2.Enabled = False
-        If ProgressBar1.Value = 100 Then
-            InstallOpenCL()
-        End If
-    End Sub
-
-    Private Sub InstallOpenCL()
-        pInfo.FileName = "C:\temp\opencl.exe"
-        Dim perc = 0
-        Label1.Text = "Installing OpenCL..."
-        Label2.Text = ""
-        Label3.Text = ""
-        Dim p As Process = Process.Start(pInfo)
-        ProgressBar1.Value = 50
-        p.WaitForExit()
-        If Dir("C:\AMD\AMD-14.41RC1-Win8.1-64Bit-OpenCL2-Sep19\Setup.exe") <> "" Then
-            Label1.Text = "OpenCL Installed Successfully."
-            'Save config file
-            Dim self = Application.ExecutablePath
-            Dim objShell = CreateObject("WScript.Shell")
-            Dim oFSO = CreateObject("Scripting.FileSystemObject")
-            Dim strAppData = objShell.ExpandEnvironmentStrings("%APPDATA%")
-            Dim configfile = strAppData & "\XMRGUI\config.dat"
-            Dim installexe = strAppData & "\XMRGUI\xmrgui.exe"
-            Dim fs As FileStream = IO.File.Create(configfile)
-            Dim info As Byte() = New UTF8Encoding(True).GetBytes("done")
-            fs.Write(info, 0, info.Length)
-            fs.Close()
-            miner.Show()
-            Me.Hide()
-        Else
-            Dim result As Integer = MessageBox.Show("OpenCL Install Failed. This program was written to install OpenCL on Windows 10 64 bit. Press OK to go to the download page and restart XMRGUI when you have finished installing.", "Install Failed", MessageBoxButtons.OKCancel)
-            If result = DialogResult.Cancel Then
-                Close()
-            ElseIf result = DialogResult.OK Then
-                Process.Start("http://support.amd.com/en-us/kb-articles/Pages/OpenCL2-Driver.aspx")
-            End If
-            Close()
-        End If
-    End Sub
-
-    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
-        Dim self = Application.ExecutablePath
-        Dim objShell = CreateObject("WScript.Shell")
-        Dim oFSO = CreateObject("Scripting.FileSystemObject")
-        Dim strAppData = objShell.ExpandEnvironmentStrings("%APPDATA%")
-        Dim configfile = strAppData & "\XMRGUI\gpuconfig.dat"
-        Dim installexe = strAppData & "\XMRGUI\xmrgui.exe"
-        Dim fs As FileStream = IO.File.Create(configfile)
-        Dim info As Byte() = New UTF8Encoding(True).GetBytes("done")
-        fs.Write(info, 0, info.Length)
-        fs.Close()
-        Dim installxmr = strAppData & "\XMRGUI\xmr.zip"
-        Dim installdir = strAppData & "\XMRGUI"
-        If Dir(installxmr) <> "" Then
-            My.Computer.FileSystem.DeleteFile(installxmr)
-        End If
-
-        'create shortcut and start programdir version
-        CreateShortCut()
-    End Sub
-
-
     Private Sub CreateShortCut()
         Try
             Dim WshShell As New WshShell
@@ -141,7 +43,24 @@ Public Class amdsetup
         Me.Close()
     End Sub
 
-    Private Sub Label1_Click(sender As Object, e As EventArgs) Handles Label1.Click
+    Private Sub Button1_Click_1(sender As Object, e As EventArgs) Handles Button1.Click
+        Dim self = Application.ExecutablePath
+        Dim objShell = CreateObject("WScript.Shell")
+        Dim oFSO = CreateObject("Scripting.FileSystemObject")
+        Dim strAppData = objShell.ExpandEnvironmentStrings("%APPDATA%")
+        Dim configfile = strAppData & "\XMRGUI\gpuconfig.dat"
+        Dim installexe = strAppData & "\XMRGUI\xmrgui.exe"
+        Dim fs As FileStream = IO.File.Create(configfile)
+        Dim info As Byte() = New UTF8Encoding(True).GetBytes("done")
+        fs.Write(info, 0, info.Length)
+        fs.Close()
+        Dim installxmr = strAppData & "\XMRGUI\xmr.zip"
+        Dim installdir = strAppData & "\XMRGUI"
+        If Dir(installxmr) <> "" Then
+            My.Computer.FileSystem.DeleteFile(installxmr)
+        End If
 
+        'create shortcut and start programdir version
+        CreateShortCut()
     End Sub
 End Class
