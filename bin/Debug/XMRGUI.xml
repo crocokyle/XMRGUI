@@ -22,7 +22,52 @@ XMRGUI
   resource lookups using this strongly typed resource class.
 </summary>
 </member>
+<member name="P:XMRGUI.My.Resources.Resources.baby">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
 <member name="P:XMRGUI.My.Resources.Resources.chart">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:XMRGUI.My.Resources.Resources.logolarge">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:XMRGUI.My.Resources.Resources.middle">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:XMRGUI.My.Resources.Resources.old">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:XMRGUI.My.Resources.Resources.screen">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:XMRGUI.My.Resources.Resources.step1">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:XMRGUI.My.Resources.Resources.step2">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:XMRGUI.My.Resources.Resources.step3">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:XMRGUI.My.Resources.Resources.test">
 <summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>

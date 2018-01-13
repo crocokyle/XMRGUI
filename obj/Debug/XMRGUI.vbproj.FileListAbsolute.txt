@@ -63,3 +63,4 @@ C:\Users\Kyle\Documents\Visual Studio 2015\Projects\XMRGUI\XMRGUI\obj\Debug\XMRG
 C:\Users\Kyle\Documents\Visual Studio 2015\Projects\XMRGUI\XMRGUI\obj\Debug\XMRGUI_MarkupCompile.cache
 C:\Users\Kyle\Documents\Visual Studio 2015\Projects\XMRGUI\XMRGUI\obj\Debug\XMRGUI.g.resources
 C:\Users\Kyle\Documents\Visual Studio 2015\Projects\XMRGUI\XMRGUI\obj\Debug\XMRGUI.updater.resources
+C:\Users\Kyle\Documents\Visual Studio 2015\Projects\XMRGUI\XMRGUI\obj\Debug\XMRGUI.noob.resources
