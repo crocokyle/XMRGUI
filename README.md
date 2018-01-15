@@ -33,6 +33,8 @@ Antivirus currently detects xmr-stak.exe as a potentially dangerous file. Until
 
 Changelog:
 
+01/14/2018 - Many UI Improvements, added manual CPU Configuration.
+
 01/13/2018 - Lots of housecleaning. Fixed broken updates. Completed setup wizard.
 
 01/12/2018 - Fixed GPU detection and setup. Added an instructional for beginners.
