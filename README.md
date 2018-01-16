@@ -16,7 +16,7 @@ Many of the features in the GUI do not function yet, please be patient and I wil
 
 Instructions:
 
-1. Run setup - In the release folder or at https://akhawaii.com/xmr-gui
+1. Run setup - In Releases or at https://akhawaii.com/xmr-gui
 2. Enter your Pool URL, XMR Address, Port Number, and Pool Password. 
 3. Click "Mine!"
 
