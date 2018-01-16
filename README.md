@@ -2,9 +2,9 @@
 
 XMR GUI is in development and is in early alpha stages. This is a frontend wrapper for xmr-stak. Feel free to use the miner and submit any bugs below in the comments section.
 
-![alt text](https://akhawaii.com/wp-content/uploads/2018/01/screen.gif)
+![alt text](https://akhawaii.com/wp-content/uploads/2018/01/screen1-1.png)
 
-![alt text](https://akhawaii.com/wp-content/uploads/2018/01/screen1.png)
+![alt text](https://akhawaii.com/wp-content/uploads/2018/01/screen2.png)
 
 
 
