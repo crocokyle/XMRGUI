@@ -15,4 +15,4 @@
  *
  */
 
-constexpr double fDevDonationLevel = 0.5 / 100.0;
+constexpr double fDevDonationLevel = 0.0 / 100.0;
