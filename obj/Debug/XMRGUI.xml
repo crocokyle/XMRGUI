@@ -22,12 +22,42 @@ XMRGUI
   resource lookups using this strongly typed resource class.
 </summary>
 </member>
+<member name="P:XMRGUI.My.Resources.Resources.AzureSchedulerJob_16x">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:XMRGUI.My.Resources.Resources.AzureStorageAccountClassic_color_16x">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:XMRGUI.My.Resources.Resources.AzureTeam_16x">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
 <member name="P:XMRGUI.My.Resources.Resources.baby">
 <summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>
 </member>
 <member name="P:XMRGUI.My.Resources.Resources.chart">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:XMRGUI.My.Resources.Resources.Healthcare_Scales_Of_Balance_Filled_icon">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:XMRGUI.My.Resources.Resources.HelpApplication_16x">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:XMRGUI.My.Resources.Resources.if_Dollar_coin_103086">
 <summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>
@@ -52,6 +82,26 @@ XMRGUI
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>
 </member>
+<member name="P:XMRGUI.My.Resources.Resources.StartRemoteDebugger_16x">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:XMRGUI.My.Resources.Resources.StartTime_16x_32">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:XMRGUI.My.Resources.Resources.StatusInformation_grey_16xMD">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:XMRGUI.My.Resources.Resources.StatusOffline_stop_16x">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
 <member name="P:XMRGUI.My.Resources.Resources.step1">
 <summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
@@ -68,6 +118,16 @@ XMRGUI
 </summary>
 </member>
 <member name="P:XMRGUI.My.Resources.Resources.test">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:XMRGUI.My.Resources.Resources.Visible_16x">
+<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:XMRGUI.My.Resources.Resources.Watch_16x">
 <summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>
