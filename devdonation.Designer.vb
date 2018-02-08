@@ -38,7 +38,7 @@ Partial Class devdonation
         Me.NumericUpDown1.Name = "NumericUpDown1"
         Me.NumericUpDown1.Size = New System.Drawing.Size(56, 20)
         Me.NumericUpDown1.TabIndex = 0
-        Me.NumericUpDown1.Value = New Decimal(New Integer() {1, 0, 0, 0})
+        Me.NumericUpDown1.Value = New Decimal(New Integer() {2, 0, 0, 0})
         '
         'Label1
         '
