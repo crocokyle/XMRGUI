@@ -755,42 +755,42 @@ void executor::hashrate_report(std::string& out)
 			std::transform(name.begin(), name.end(), name.begin(), ::toupper);
 			
 			out.append("HASHRATE REPORT - ").append(name).append("\n");
-			out.append("| ID |    10s |    60s |    15m |");
+			//out.append("| ID |    10s |    60s |    15m |").append("\n");
 			if(nthd != 1)
-				out.append(" ID |    10s |    60s |    15m |\n");
+				out.append("");
 			else
-				out.append(1, '\n');
+				out.append("");
 
 			for (i = 0; i < nthd; i++)
 			{
 				double fHps[3];
-
+				double devTot[3];
 				uint32_t tid = backEnds[i]->iThreadNo;
 				fHps[0] = telem->calc_telemetry_data(10000, tid);
 				fHps[1] = telem->calc_telemetry_data(60000, tid);
 				fHps[2] = telem->calc_telemetry_data(900000, tid);
-
+				devTot[0] += fHps[0];
 				snprintf(num, sizeof(num), "| %2u |", (unsigned int)i);
-				out.append(num);
+				out.append(name);
 				out.append(hps_format(fHps[0], num, sizeof(num))).append(" |");
 				out.append(hps_format(fHps[1], num, sizeof(num))).append(" |");
-				out.append(hps_format(fHps[2], num, sizeof(num))).append(1, ' ');
+				out.append(hps_format(fHps[2], num, sizeof(num))).append(1, ' ').append("\n");
 
 				fTotal[0] += fHps[0];
 				fTotal[1] += fHps[1];
 				fTotal[2] += fHps[2];
 
 				if((i & 0x1) == 1) //Odd i's
-					out.append("|\n");
+					out.append("");
 			}
 
 			if((i & 0x1) == 1) //We had odd number of threads
-				out.append("|\n");
+				out.append("");
 
-			if(nthd != 1)
-				out.append("-----------------------------------------------------\n");
-			else
-				out.append("---------------------------\n");
+			//if(nthd != 1)
+				//out.append("-----------------------------------------------------\n");
+		//	else
+				//out.append("---------------------------\n");
 		}
 	}
 

@@ -16,3 +16,8 @@
  */
 
 constexpr double fDevDonationLevel = 0.0 / 100.0;
+
+/*
+ * Dev Donation for XMRGUI is handled through a remote proxy. Half of the proceeds go to the original developers of xmr-stak.
+ * The other half goes to the developer of XMRGUI
+ */
