@@ -116,7 +116,7 @@ Partial Class updater
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(28, 13)
         Me.Label6.TabIndex = 18
-        Me.Label6.Text = "v1.5"
+        Me.Label6.Text = "v1.7"
         '
         'Label7
         '
@@ -125,7 +125,7 @@ Partial Class updater
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(28, 13)
         Me.Label7.TabIndex = 19
-        Me.Label7.Text = "v1.6"
+        Me.Label7.Text = "v1.8"
         '
         'Button2
         '

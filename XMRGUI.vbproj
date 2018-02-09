@@ -1,5 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\CefSharp.WinForms.57.0.0\build\CefSharp.WinForms.props" Condition="Exists('..\packages\CefSharp.WinForms.57.0.0\build\CefSharp.WinForms.props')" />
+  <Import Project="..\packages\CefSharp.Common.57.0.0\build\CefSharp.Common.props" Condition="Exists('..\packages\CefSharp.Common.57.0.0\build\CefSharp.Common.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -28,6 +30,8 @@
     <ApplicationVersion>1.0.0.0</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -87,6 +91,38 @@
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'test|AnyCPU'">
+    <OutputPath>bin\test\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DocumentationFile>XMRGUI.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DocumentationFile>XMRGUI.xml</DocumentationFile>
+    <Optimize>true</Optimize>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'test|x86'">
+    <OutputPath>bin\x86\test\</OutputPath>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Chart.Mvc, Version=1.0.0.2, Culture=neutral, processorArchitecture=MSIL">
@@ -200,6 +236,18 @@
       <DependentUpon>Form1.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="gpuconfig.Designer.vb">
+      <DependentUpon>gpuconfig.vb</DependentUpon>
+    </Compile>
+    <Compile Include="gpuconfig.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HashrateMonitor.Designer.vb">
+      <DependentUpon>HashrateMonitor.vb</DependentUpon>
+    </Compile>
+    <Compile Include="HashrateMonitor.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="miner.Designer.vb">
       <DependentUpon>miner.vb</DependentUpon>
     </Compile>
@@ -228,6 +276,12 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ObservableValue.vb" />
+    <Compile Include="Profiles.Designer.vb">
+      <DependentUpon>Profiles.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Profiles.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="updater.Designer.vb">
       <DependentUpon>updater.vb</DependentUpon>
     </Compile>
@@ -246,6 +300,12 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="gpuconfig.resx">
+      <DependentUpon>gpuconfig.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HashrateMonitor.resx">
+      <DependentUpon>HashrateMonitor.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="miner.resx">
       <DependentUpon>miner.vb</DependentUpon>
     </EmbeddedResource>
@@ -257,6 +317,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="noob.resx">
       <DependentUpon>noob.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Profiles.resx">
+      <DependentUpon>Profiles.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="updater.resx">
       <DependentUpon>updater.vb</DependentUpon>
@@ -296,6 +359,25 @@
     <None Include="Resources\step1.png" />
     <None Include="Resources\step2.png" />
     <None Include="Resources\step3.png" />
+    <None Include="Resources\StatusOffline_stop_16x.png" />
+    <None Include="Resources\Visible_16x.png" />
+    <None Include="Resources\Watch_16x.png" />
+    <None Include="Resources\Healthcare-Scales-Of-Balance-Filled-icon.png" />
+    <None Include="Resources\if_Dollar_coin_103086.png" />
+    <None Include="Resources\AzureTeam_16x.png" />
+    <None Include="Resources\AzureSchedulerJob_16x.png" />
+    <None Include="Resources\AzureStorageAccountClassic_color_16x.png" />
+    <None Include="Resources\HelpApplication_16x.png" />
+    <None Include="Resources\StatusInformation_grey_16xMD.png" />
+    <None Include="Resources\StartTime_16x_32.bmp" />
+    <None Include="Resources\StartRemoteDebugger_16x.png" />
+    <None Include="Resources\reddit-alien.png" />
+    <None Include="Resources\globe.png" />
+    <None Include="Resources\Save_grey_16x_24.bmp" />
+    <None Include="Resources\UserCode_16x.png" />
+    <None Include="Resources\StackLeft_16x.png" />
+    <None Include="Resources\hrm.gif" />
+    <None Include="Resources\profiles.png" />
     <Content Include="Scripts\Chart.js" />
   </ItemGroup>
   <ItemGroup>
@@ -365,6 +447,21 @@
     </Page>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <Import Project="..\packages\cef.redist.x64.3.2987.1601\build\cef.redist.x64.targets" Condition="Exists('..\packages\cef.redist.x64.3.2987.1601\build\cef.redist.x64.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\cef.redist.x64.3.2987.1601\build\cef.redist.x64.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\cef.redist.x64.3.2987.1601\build\cef.redist.x64.targets'))" />
+    <Error Condition="!Exists('..\packages\cef.redist.x86.3.2987.1601\build\cef.redist.x86.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\cef.redist.x86.3.2987.1601\build\cef.redist.x86.targets'))" />
+    <Error Condition="!Exists('..\packages\CefSharp.Common.57.0.0\build\CefSharp.Common.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\CefSharp.Common.57.0.0\build\CefSharp.Common.props'))" />
+    <Error Condition="!Exists('..\packages\CefSharp.Common.57.0.0\build\CefSharp.Common.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\CefSharp.Common.57.0.0\build\CefSharp.Common.targets'))" />
+    <Error Condition="!Exists('..\packages\CefSharp.WinForms.57.0.0\build\CefSharp.WinForms.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\CefSharp.WinForms.57.0.0\build\CefSharp.WinForms.props'))" />
+    <Error Condition="!Exists('..\packages\CefSharp.WinForms.57.0.0\build\CefSharp.WinForms.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\CefSharp.WinForms.57.0.0\build\CefSharp.WinForms.targets'))" />
+  </Target>
+  <Import Project="..\packages\cef.redist.x86.3.2987.1601\build\cef.redist.x86.targets" Condition="Exists('..\packages\cef.redist.x86.3.2987.1601\build\cef.redist.x86.targets')" />
+  <Import Project="..\packages\CefSharp.Common.57.0.0\build\CefSharp.Common.targets" Condition="Exists('..\packages\CefSharp.Common.57.0.0\build\CefSharp.Common.targets')" />
+  <Import Project="..\packages\CefSharp.WinForms.57.0.0\build\CefSharp.WinForms.targets" Condition="Exists('..\packages\CefSharp.WinForms.57.0.0\build\CefSharp.WinForms.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

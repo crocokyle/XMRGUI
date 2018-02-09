@@ -24,6 +24,11 @@ Public Class Form1
     Dim installxmr = strAppData & "\XMRGUI\xmr.zip"
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        If Process.GetProcessesByName _
+          (Process.GetCurrentProcess.ProcessName).Length > 1 Then
+
+            Application.Exit()
+        End If
         ProgressBar1.Style = ProgressBarStyle.Continuous
         ProgressBar1.MarqueeAnimationSpeed = 30
 
@@ -118,7 +123,32 @@ Public Class Form1
         Dim ssleay32 = strAppData & "\XMRGUI\ssleay32.dll"
         Dim libeay32dest = "C:\Windows\system32\libeay32.dll"
         Dim ssleay32dest = "C:\Windows\system32\ssleay32.dll"
+        Dim de = strAppData & "\XMRGUI\de"
+        Dim es = strAppData & "\XMRGUI\es"
+        Dim fr = strAppData & "\XMRGUI\fr"
+        Dim it = strAppData & "\XMRGUI\it"
+        Dim locales = strAppData & "\XMRGUI\locales"
+        Dim zhcn = strAppData & "\XMRGUI\zh-CN"
+        If (Not System.IO.Directory.Exists(de)) Then
+            System.IO.Directory.CreateDirectory(de)
+        End If
+        If (Not System.IO.Directory.Exists(es)) Then
+            System.IO.Directory.CreateDirectory(es)
+        End If
+        If (Not System.IO.Directory.Exists(fr)) Then
+            System.IO.Directory.CreateDirectory(fr)
+        End If
+        If (Not System.IO.Directory.Exists(it)) Then
+            System.IO.Directory.CreateDirectory(it)
+        End If
+        If (Not System.IO.Directory.Exists(locales)) Then
+            System.IO.Directory.CreateDirectory(locales)
+        End If
+        If (Not System.IO.Directory.Exists(zhcn)) Then
+            System.IO.Directory.CreateDirectory(zhcn)
+        End If
         My.Application.DoEvents()
+
         Try
             Using archive As ZipArchive = ZipFile.OpenRead(installxmr)
                 For Each entry As ZipArchiveEntry In archive.Entries
@@ -127,11 +157,12 @@ Public Class Form1
             End Using
 
         Catch ex As Exception
-
+            MsgBox(ex.ToString)
         End Try
         ProgressBar1.Value = 0
         wizard()
         My.Application.DoEvents()
+
     End Sub
     Private Sub xmrstak_DownloadProgressChanged(ByVal sender As Object, ByVal e As DownloadProgressChangedEventArgs) Handles xmrstak.DownloadProgressChanged
 
@@ -190,23 +221,24 @@ Public Class Form1
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
 
         ' Save wizard information so it doesn't run again
-
-        Dim self = Application.ExecutablePath
-        Dim objShell = CreateObject("WScript.Shell")
-        Dim oFSO = CreateObject("Scripting.FileSystemObject")
-        Dim strAppData = objShell.ExpandEnvironmentStrings("%APPDATA%")
-        Dim configfile = strAppData & "\XMRGUI\gpuconfig.dat"
-        Dim installexe = strAppData & "\XMRGUI\xmrgui.exe"
-        Dim fs As FileStream = IO.File.Create(configfile)
-        Dim info As Byte() = New UTF8Encoding(True).GetBytes("done")
-        fs.Write(info, 0, info.Length)
-        fs.Close()
-        Dim installxmr = strAppData & "\XMRGUI\xmr.zip"
-        Dim installdir = strAppData & "\XMRGUI"
-        If Dir(installxmr) <> "" Then
-            My.Computer.FileSystem.DeleteFile(installxmr)
-        End If
-        CreateShortCut()
+        amdsetup.Show()
+        Me.Hide()
+        'Dim self = Application.ExecutablePath
+        'Dim objShell = CreateObject("WScript.Shell")
+        'Dim oFSO = CreateObject("Scripting.FileSystemObject")
+        'Dim strAppData = objShell.ExpandEnvironmentStrings("%APPDATA%")
+        'Dim configfile = strAppData & "\XMRGUI\gpuconfig.dat"
+        'Dim installexe = strAppData & "\XMRGUI\xmrgui.exe"
+        'Dim fs As FileStream = IO.File.Create(configfile)
+        'Dim info As Byte() = New UTF8Encoding(True).GetBytes("done")
+        'fs.Write(info, 0, info.Length)
+        'fs.Close()
+        'Dim installxmr = strAppData & "\XMRGUI\xmr.zip"
+        'Dim installdir = strAppData & "\XMRGUI"
+        'If Dir(installxmr) <> "" Then
+        '    My.Computer.FileSystem.DeleteFile(installxmr)
+        'End If
+        'CreateShortCut()
     End Sub
     Private Sub CreateShortCut()
 
@@ -235,5 +267,9 @@ Public Class Form1
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         noob.Show()
         Me.Hide()
+    End Sub
+
+    Private Sub Label4_Click(sender As Object, e As EventArgs) Handles Label4.Click
+
     End Sub
 End Class
