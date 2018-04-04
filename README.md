@@ -16,7 +16,7 @@ Many of the features in the GUI do not function yet, please be patient and I wil
 
 Instructions:
 
-1. Run `xmrgui_setup_v(version number).exe` - from [Releases](https://github.com/crocokyle/XMRGUI/releases) or from [the site](http://xmrgui.com/download)
+1. Run `xmrgui_setup_v(version number).exe` - downlaod it from [Releases](https://github.com/crocokyle/XMRGUI/releases) or from [the site](http://xmrgui.com/download)
 
 2. Enter your `Pool URL`, `XMR Address`, `Port Number`, and `Pool Password`. 
 3. Click `Mine!`
