@@ -12,7 +12,7 @@ Feel free to leave any and all suggestions for new features as I will be maintai
 
 Many of the features in the GUI do not function yet, please be patient and I will continue to update and add them.
 
-* Currently, the dev donation is configurable through the GUI at a minimum of 1%
+* Currently, the dev donation is configurable through the GUI at a minimum of 1%.
 
 Instructions:
 
