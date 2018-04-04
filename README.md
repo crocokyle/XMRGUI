@@ -1,6 +1,6 @@
 # XMRGUI
 
-XMR GUI is in development and is in early alpha stages. This is a frontend wrapper for xmr-stak. Feel free to use the miner and submit any bugs in an issue, or improvements in a pull request.
+XMR GUI is in development and is in early alpha stages. This is a frontend wrapper for xmr-stak. Feel free to use the miner and submit any bugs in [Issue](https://github.com/crocokyle/XMRGUI/issues), or improvements in a Pull request.
 
 ![alt text](https://akhawaii.com/wp-content/uploads/2018/01/screen1-1.png)
 
@@ -12,13 +12,15 @@ Feel free to leave any and all suggestions for new features as I will be maintai
 
 Many of the features in the GUI do not function yet, please be patient and I will continue to update and add them.
 
-* Currently, the dev donation is configurable through the GUI at a minimum of 1%.
+* Currently, the dev donation is configurable through the GUI at a minimum of `1%`.
 
 Instructions:
 
-1. Run setup - In Releases or at http://xmrgui.com/download
+1. Run `xmrgui_setup_v(version number).exe` - downlaod it from [Releases](https://github.com/crocokyle/XMRGUI/releases) or from [the site](http://xmrgui.com/download)
+
 2. Enter your `Pool URL`, `XMR Address`, `Port Number`, and `Pool Password`. 
 3. Click `Mine!`
+
 
 
 Special Notes:
