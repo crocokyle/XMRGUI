@@ -1,6 +1,6 @@
 # XMRGUI
 
-XMR GUI is in development and is in early alpha stages. This is a frontend wrapper for xmr-stak. Feel free to use the miner and submit any bugs below in the comments section.
+XMR GUI is in development and is in early alpha stages. This is a frontend wrapper for xmr-stak. Feel free to use the miner and submit any bugs in an issue, or improvements in a pull request.
 
 ![alt text](https://akhawaii.com/wp-content/uploads/2018/01/screen1-1.png)
 
@@ -16,19 +16,19 @@ Many of the features in the GUI do not function yet, please be patient and I wil
 
 Instructions:
 
-1. Run setup - In Releases or at https://akhawaii.com/xmr-gui
-2. Enter your Pool URL, XMR Address, Port Number, and Pool Password. 
-3. Click "Mine!"
+1. Run setup - In Releases or at http://xmrgui.com/download
+2. Enter your `Pool URL`, `XMR Address`, `Port Number`, and `Pool Password`. 
+3. Click `Mine!`
 
 
 Special Notes:
 
-If you have issues with the program make sure to delete the folder at /AppData/Roaming/XMRGUI and reinstall.
-Choosing the "Run on Idle" option has some minor issues. Please report them below. Currently, the GUI will remember your pool information, however, it won't remember the option for "Run on Idle" even though it still functions.
+If you have issues with the program make sure to delete the folder at `/AppData/Roaming/XMRGUI` and reinstall.
+Choosing the `Run on Idle` option has some minor issues. Please report them in the Issues section. Currently, the GUI will remember your pool information, however, it won't remember the option for `Run on Idle` even though it still functions.
 
 
-If you click "Mine!" and don't get any text displayed in the terminal area, please double check your pool information for incorrect symbols.
-Antivirus currently detects xmr-stak.exe as a potentially dangerous file. Untill I can request that xmr-stak be whitelisted, you may need to allow it to run manually. This happens with almost all compiled versions of xmr-stak.
+If you click `Mine!` and don't get any text displayed in the terminal area, please double check your pool information for incorrect symbols.
+Antivirus currently detects `xmr-stak.exe` as a potentially dangerous file. Until I can request that `xmr-stak` be whitelisted, you may need to allow it to run manually. This happens with almost all compiled versions of xmr-stak.
 
 
 Changelog:
